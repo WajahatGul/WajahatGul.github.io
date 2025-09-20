@@ -1,0 +1,1398 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wajahat Gul - Machine Learning & Python Developer</title>
+
+  <!-- Favicons -->
+  <link href="{% static 'portfolio/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'portfolio/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <style>
+    :root {
+      --primary: #6c2bd9;
+      --primary-dark: #5520b5;
+      --secondary: #ff6b6b;
+      --dark: #121212;
+      --dark-light: #1e1e1e;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --text-light: #f8f9fa;
+      --text-muted: #a0a0a0;
+    }
+    
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: var(--dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Raleway", sans-serif;
+      font-weight: 700;
+    }
+    
+    /* Header Styles */
+    .header {
+      background-color: var(--dark-light);
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 250px;
+      transition: all 0.3s;
+      z-index: 999;
+      padding: 0 15px;
+      overflow-y: auto;
+    }
+    
+    .profile-img {
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .profile-img img {
+      width: 150px;
+      height: 150px;
+      border: 8px solid #2c2f3f;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .logo {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .sitename {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin: 0;
+    }
+    
+    .social-links {
+      padding: 0 0 20px 0;
+      text-align: center;
+    }
+    
+    .social-links a {
+      font-size: 18px;
+      display: inline-block;
+      background: #2c2f3f;
+      color: var(--text-light);
+      line-height: 1;
+      padding: 8px 0;
+      margin: 0 4px;
+      border-radius: 50%;
+      text-align: center;
+      width: 36px;
+      height: 36px;
+      transition: 0.3s;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .navmenu {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .navmenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .navmenu a {
+      display: flex;
+      align-items: center;
+      color: #a8a9b4;
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      transition: 0.3s;
+      font-size: 15px;
+      border-radius: 5px;
+    }
+    
+    .navmenu a i {
+      font-size: 24px;
+      padding-right: 8px;
+      color: #6f7180;
+    }
+    
+    .navmenu a:hover, .navmenu a.active {
+      text-decoration: none;
+      color: var(--text-light);
+      background: #2c2f3f;
+    }
+    
+    .navmenu a:hover i, .navmenu a.active i {
+      color: var(--primary);
+    }
+    
+    /* Main Content */
+    .main {
+      margin-left: 300px;
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 60px 0;
+      overflow: hidden;
+    }
+    
+    .section-title {
+      padding-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      position: relative;
+      color: var(--text-light);
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+      bottom: 0;
+      left: 0;
+    }
+    
+    .section-title p {
+      margin-bottom: 0;
+      color: var(--text-muted);
+    }
+    
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      height: 100vh;
+      background: url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80") top center;
+      background-size: cover;
+      position: relative;
+      padding: 0;
+    }
+    
+    .hero:before {
+      content: "";
+      background: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    .hero .container {
+    
+      position: relative;
+      padding-top: 110px;
+      text-align: center;
+    }
+    
+    .hero h2 {
+      margin: 0;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+    
+    .hero p {
+      color: var(--text-light);
+      margin: 15px 0 0 0;
+      font-size: 26px;
+    }
+    
+    .hero p span {
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+    
+    /* About Section */
+    .about .content h3 {
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--primary);
+    }
+    
+    .about .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .about .content ul li {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .about .content ul strong {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+    
+    .about .content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Skills Section */
+    .skills .progress {
+      height: 60px;
+      display: block;
+      background: #2c2f3f;
+      border-radius: 5px;
+    }
+    
+    .skills .progress .skill {
+      padding: 10px 0;
+      margin: 0;
+      text-transform: uppercase;
+      display: block;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+    
+    .skills .progress .skill .val {
+      float: right;
+      font-style: normal;
+    }
+    
+    .skills .progress-bar-wrap {
+      background: #2c2f3f;
+      height: 10px;
+      border-radius: 5px;
+    }
+    
+    .skills .progress-bar {
+      height: 10px;
+      transition: .9s;
+      background-color: var(--primary);
+      border-radius: 5px;
+    }
+    
+    /* Resume Section */
+    .resume .resume-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+    
+    .resume .resume-item {
+      padding: 0 0 20px 20px;
+      margin-top: -2px;
+      border-left: 2px solid var(--primary);
+      position: relative;
+    }
+    
+    .resume .resume-item h4 {
+      line-height: 18px;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .resume .resume-item h5 {
+      font-size: 16px;
+      background: #2c2f3f;
+      padding: 5px 15px;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+    
+    .resume .resume-item::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      left: -9px;
+      top: 0;
+      background: #fff;
+      border: 2px solid var(--primary);
+    }
+    
+    /* Certifications Section */
+    .certifications {
+      padding: 60px 0;
+    }
+    
+    .certifications .card {
+      background: #2c2f3f;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+    
+    .certifications .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(108, 43, 217, 0.3);
+    }
+    
+    .certifications a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .certifications .card h5 {
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .certifications .card p {
+      color: var(--text-muted);
+      margin: 0;
+    }
+    
+    /* Portfolio Section */
+    .portfolio .portfolio-item {
+      margin-bottom: 30px;
+    }
+    
+    .portfolio-wrap {
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #2c2f3f;
+      z-index: 1;
+    }
+    
+    .portfolio-wrap::before {
+      content: "";
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      top: 30px;
+      bottom: 30px;
+      transition: all ease-in-out 0.3s;
+      z-index: 2;
+      opacity: 0;
+    }
+    
+    .portfolio-wrap img {
+      transition: all ease-in-out 0.3s;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    
+    .portfolio-wrap .portfolio-info {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      z-index: 3;
+      transition: all ease-in-out 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .portfolio-wrap .portfolio-info h4 {
+      font-size: 20px;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+    
+    .portfolio-wrap .portfolio-info p {
+      color: var(--text-light);
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .portfolio-wrap .portfolio-links {
+      text-align: center;
+      z-index: 4;
+    }
+    
+    .portfolio-wrap .portfolio-links a {
+      color: var(--text-light);
+      margin: 0 5px;
+      font-size: 28px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    
+    .portfolio-wrap .portfolio-links a:hover {
+      color: var(--primary);
+    }
+    
+    .portfolio-wrap:hover::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 1;
+    }
+    
+    .portfolio-wrap:hover img {
+      transform: scale(1.1);
+    }
+    
+    .portfolio-wrap:hover .portfolio-info {
+      opacity: 1;
+    }
+    
+    /* Portfolio Details Modal */
+    .portfolio-details {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    
+    .portfolio-details-content {
+      background-color: var(--dark-light);
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 900px;
+      position: relative;
+    }
+    
+    .portfolio-details-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: var(--text-light);
+      cursor: pointer;
+      z-index: 10;
+    }
+    
+    .portfolio-details-close:hover {
+      color: var(--primary);
+    }
+    
+    .portfolio-details h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .portfolio-details img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .portfolio-details h3 {
+      color: var(--text-light);
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .portfolio-details ul {
+      padding-left: 20px;
+      color: var(--text-muted);
+    }
+    
+    .portfolio-details ul li {
+      margin-bottom: 10px;
+    }
+    
+    /* Services Section */
+    .services .icon-box {
+      text-align: center;
+      background: #2c2f3f;
+      padding: 80px 20px;
+      transition: all ease-in-out 0.3s;
+      border-radius: 8px;
+      height: 100%;
+    }
+    
+    .services .icon-box .icon {
+      margin: 0 auto;
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: ease-in-out 0.3s;
+      color: var(--text-light);
+      font-size: 28px;
+    }
+    
+    .services .icon-box h4 {
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+    
+    .services .icon-box h4 a {
+      color: var(--text-light);
+      transition: ease-in-out 0.3s;
+    }
+    
+    .services .icon-box p {
+      line-height: 24px;
+      font-size: 14px;
+      margin-bottom: 0;
+      color: var(--text-muted);
+    }
+    
+    .services .icon-box:hover {
+      background: var(--primary);
+    }
+    
+    .services .icon-box:hover h4 a,
+    .services .icon-box:hover .icon {
+      color: #fff;
+    }
+    
+    /* Contact Section */
+    .contact .info {
+      padding: 30px;
+      background: #2c2f3f;
+      width: 100%;
+      border-radius: 8px;
+    }
+    
+    .contact .info i {
+      font-size: 20px;
+      color: var(--primary);
+      float: left;
+      width: 44px;
+      height: 44px;
+      background: #3a3d4d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      transition: all 0.3s ease-in-out;
+      margin-right: 15px;
+    }
+    
+    .contact .info h4 {
+      padding: 0 0 0 60px;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--text-light);
+    }
+    
+    .contact .info p {
+      padding: 0 0 0 60px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    
+    .contact .info .email p {
+      padding-top: 5px;
+    }
+    
+    .contact .info .social-links {
+      padding-left: 60px;
+    }
+    
+    .contact .info .social-links a {
+      font-size: 18px;
+      display: inline-block;
+      background: #333;
+      color: #fff;
+      line-height: 1;
+      padding: 8px 0;
+      border-radius: 50%;
+      text-align: center;
+      width: 36px;
+      height: 36px;
+      transition: 0.3s;
+      margin-right: 10px;
+    }
+    
+    .contact .info .social-links a:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    
+    .contact .php-email-form {
+      width: 100%;
+      padding: 30px;
+      background: #2c2f3f;
+      border-radius: 8px;
+    }
+    
+    .contact .php-email-form .form-group {
+      padding-bottom: 8px;
+    }
+    
+    .contact .php-email-form .error-message {
+      display: none;
+      color: #fff;
+      background: #ed3c0d;
+      text-align: left;
+      padding: 15px;
+      font-weight: 600;
+    }
+    
+    .contact .php-email-form .error-message br + br {
+      margin-top: 25px;
+    }
+    
+    .contact .php-email-form .sent-message {
+      display: none;
+      color: #fff;
+      background: #18d26e;
+      text-align: center;
+      padding: 15px;
+      font-weight: 600;
+    }
+    
+    .contact .php-email-form .loading {
+      display: none;
+      background: #2c2f3f;
+      text-align: center;
+      padding: 15px;
+    }
+    
+    .contact .php-email-form .loading:before {
+      content: "";
+      display: inline-block;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      margin: 0 10px -6px 0;
+      border: 3px solid #18d26e;
+      border-top-color: #eee;
+      animation: animate-loading 1s linear infinite;
+    }
+    
+    .contact .php-email-form input, .contact .php-email-form textarea {
+      border-radius: 4px;
+      box-shadow: none;
+      font-size: 14px;
+      background: #3a3d4d;
+      border: 0;
+      color: var(--text-light);
+    }
+    
+    .contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
+      background-color: #454859;
+    }
+    
+    .contact .php-email-form input {
+      height: 44px;
+    }
+    
+    .contact .php-email-form textarea {
+      padding: 10px 12px;
+    }
+    
+    .contact .php-email-form button[type="submit"] {
+      background: var(--primary);
+      border: 0;
+      padding: 10px 24px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 4px;
+    }
+    
+    .contact .php-email-form button[type="submit"]:hover {
+      background: #5a20c4;
+    }
+    
+    @keyframes animate-loading {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Footer */
+    .footer {
+      background: #2c2f3f;
+      padding: 30px 0;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    
+    .footer .copyright {
+      text-align: center;
+    }
+    
+    .footer .credits {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    
+    .footer .credits a {
+      color: var(--primary);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1199px) {
+      .header {
+        left: -300px;
+      }
+      
+      .main {
+        margin-left: 0;
+      }
+    }
+    
+    @media (max-width: 991px) {
+      .hero {
+        height: auto;
+        padding: 80px 0 60px 0;
+      }
+      
+      .hero .container {
+        padding-top: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex flex-column">
+    <div class="profile-img">
+      <img src="img/profile_image.jpg" alt="Wajahat Gul" class="img-fluid rounded-circle">
+    </div>
+
+    <a href="#hero" class="logo d-flex align-items-center justify-content-center" style="text-decoration: none;">
+      <h1 class="sitename">Wajahat Gul</h1>
+    </a>
+
+    <div class="social-links text-center">
+      <a href="https://www.linkedin.com/in/wajahatgul98" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/WajahatGul" target="_blank" class="github"><i class="bi bi-github"></i></a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wajahatgul2793@gmail.com" class="email"><i class="bi bi-envelope"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#certifications"><i class="bi bi-award navicon"></i> Certifications</a></li>
+        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
+        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <div class="container" data-aos="fade-up">
+        <h2>Wajahat Gul</h2>
+        <p>I'm <span class="typed" data-typed-items="Machine Learning Engineer, Python Developer, Backend Developer, AI Enthusiast"></span></p>
+      </div>
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>About</h2>
+          <p>Innovative Machine Learning and Backend Developer with experience in Python, Django, and automation. Skilled in designing AI solutions, API integrations, and data-driven applications.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="img\profile_image.jpg" class="img-fluid rounded" alt="Wajahat Gul">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <h3>Machine Learning &amp; Python Developer</h3>
+            <p class="fst-italic">
+              Strong foundation in Python and Data Science with hands-on experience in automation, chatbots, and predictive analytics.
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>wajahatgul2793@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+92 340 9308229</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Islamabad, Pakistan</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor of Computer Science</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Open to Jobs:</strong> <span>Available</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Experience:</strong> <span>2+ years</span></li>
+                </ul>
+              </div>
+            </div>
+            <p>
+              I specialize in creating intelligent solutions that bridge the gap between data and actionable insights. My expertise spans machine learning algorithms, backend development, and process automation, with a focus on delivering efficient and scalable applications.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section><!-- /About Section -->
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p>Technical expertise and proficiency across various technologies and frameworks</p>
+        </div>
+
+        <div class="row skills-content">
+          <div class="col-lg-6">
+            <div class="progress">
+              <span class="skill">Python <i class="val">95%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Django <i class="val">90%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Machine Learning <i class="val">85%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="progress">
+              <span class="skill">JavaScript <i class="val">75%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">API Integration <i class="val">88%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Automation <i class="val">92%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Skills Section -->
+
+    <section id="resume" class="resume section">
+      <div class="container aos-init aos-animate" data-aos="fade-up" bis_skin_checked="1">
+        <div class="section-title" bis_skin_checked="1">
+          <h2>Resume</h2>
+          <p>Professional journey and educational background</p>
+          <!-- FIXED Download Resume Button -->
+            <a href="resume/Wajahat_resume_updated.pdf" target="_blank" class="btn btn-primary mt-3">
+            <i class="bi bi-download me-2"></i>Download Resume
+            </a>
+          </div>
+    
+        <div class="row" bis_skin_checked="1">
+          <div class="col-lg-6" bis_skin_checked="1">
+            <h3 class="resume-title">Professional Experience</h3>
+            
+            <div class="resume-item" bis_skin_checked="1">
+              <h4>AI/Automation Intern</h4>
+              <h5>Jul 2025 – Sep 2025</h5>
+              <p><em>Y&amp;M TechWorks, Punjab, Pakistan</em></p>
+              <ul>
+                <li>Designed and deployed automation workflows using Python for backend processes and client-facing solutions</li>
+                <li>Created chatbot and AI-based tools to enhance business efficiency and customer engagement</li>
+                <li>Improved operational speed by automating repetitive tasks, reducing manual effort by over 60%</li>
+              </ul>
+            </div>
+    
+            <div class="resume-item" bis_skin_checked="1">
+              <h4>Competitive Team Member</h4>
+              <h5>Jan 2025 – Present</h5>
+              <p><em>YOTA - Youth Organization for Technical Advancement, Islamabad, Pakistan</em></p>
+              <ul>
+                <li>Organized workshops for React and Git version control for university students</li>
+                <li>Collaborated with team members to deliver technical training sessions and skill development programs</li>
+                <li>Contributed to university-based technical society initiatives and community building</li>
+              </ul>
+            </div>
+          </div>
+    
+          <div class="col-lg-6" bis_skin_checked="1">
+            <h3 class="resume-title">Education</h3>
+            
+            <div class="resume-item" bis_skin_checked="1">
+              <h4>Bachelor of Science in Computer Science</h4>
+              <h5>Feb 2023 – Feb 2027</h5>
+              <p><em>Bahria University, Islamabad, Pakistan</em></p>
+            </div>
+    
+            <div class="resume-item" bis_skin_checked="1">
+              <h4>Intermediate, Pre-Engineering</h4>
+              <h5>Aug 2020 – Aug 2022</h5>
+              <p><em>F.G. Degree College for Men, Wah Cantt, Pakistan</em></p>
+            </div>
+    
+            <h3 class="resume-title mt-4">Skills &amp; Tools</h3>
+            <div class="resume-item" bis_skin_checked="1">
+              <h4>Programming</h4>
+              <p>Python, C++, JavaScript, SQL</p>
+            </div>
+            <div class="resume-item" bis_skin_checked="1">
+              <h4>Frameworks</h4>
+              <p>Django, Scikit-learn, Pandas, NumPy, Tkinter, Bootstrap</p>
+            </div>
+            <div class="resume-item" bis_skin_checked="1">
+              <h4>Tools</h4>
+              <p>Selenium, n8n, OpenAI API, REST APIs, Git, GitHub</p>
+            </div>
+            <div class="resume-item" bis_skin_checked="1">
+              <h4>Specialties</h4>
+              <p>Machine Learning, Backend Development, Automation, Data Science</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+     
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Certifications</h2>
+          <p>Professional certifications and achievements</p>
+        </div>
+
+        <a href="https://www.linkedin.com/learning/certificates/47d2521978aeefdd6ffbbbea2695e6c7bde8ec5f72b3da77c5c022afb2c97537" target="_blank">
+          <div class="card p-3"><h5>Skill Up with Python: Data Science and ML</h5><p>LinkedIn • Jul 2025</p></div>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/records/1YG38KCUGZCK" target="_blank">
+          <div class="card p-3"><h5>Supervised Machine Learning: Regression & Classification</h5><p>DeepLearning.AI • Jun 2025</p></div>
+        </a>
+        <a href="https://www.udemy.com/certificate/UC-531d1455-345d-4096-adb5-637cc5eee608/" target="_blank">
+          <div class="card p-3"><h5>Complete Python & Django Development</h5><p>Udemy • Mar 2025</p></div>
+        </a>
+      </div>
+    </section><!-- /Certifications Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Projects</h2>
+          <p>Check out some of my recent projects</p>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          <!-- Project 1 -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap" onclick="showPortfolioDetails('rag-chatbot')">
+              <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" class="img-fluid" alt="RAG Chatbot">
+              <div class="portfolio-info">
+                <h4>RAG Chatbot</h4>
+                <p>WhatsApp Integration</p>
+                <div class="portfolio-links">
+                  <a href="#" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap" onclick="showPortfolioDetails('whatsapp-automation')">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" class="img-fluid" alt="WhatsApp Automation">
+              <div class="portfolio-info">
+                <h4>WhatsApp Automation</h4>
+                <p>Group Management</p>
+                <div class="portfolio-links">
+                  <a href="#" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap" onclick="showPortfolioDetails('house-price-predictor')">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" class="img-fluid" alt="House Price Predictor">
+              <div class="portfolio-info">
+                <h4>House Price Predictor</h4>
+                <p>Machine Learning</p>
+                <div class="portfolio-links">
+                  <a href="#" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap" onclick="showPortfolioDetails('imdb-clone')">
+              <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" class="img-fluid" alt="IMDB Clone">
+              <div class="portfolio-info">
+                <h4>IMDB Clone</h4>
+                <p>Django Web App</p>
+                <div class="portfolio-links">
+                  <a href="#" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap" onclick="showPortfolioDetails('weathersphere')">
+              <img src="https://images.unsplash.com/photo-1463171379579-3fdfb86d6285?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" class="img-fluid" alt="Weather Dashboard">
+              <div class="portfolio-info">
+                <h4>WeatherSphere</h4>
+                <p>Real-Time Dashboard</p>
+                <div class="portfolio-links">
+                  <a href="#" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap" onclick="showPortfolioDetails('portfolio-website')">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" class="img-fluid" alt="Portfolio Website">
+              <div class="portfolio-info">
+                <h4>Portfolio Website</h4>
+                <p>Professional Design</p>
+                <div class="portfolio-links">
+                  <a href="#" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Portfolio Section -->
+
+   <!-- Portfolio Details Modals -->
+<div id="rag-chatbot" class="portfolio-details">
+  <div class="portfolio-details-content">
+    <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
+    <h2>RAG Chatbot Integrated with WhatsApp</h2>
+    <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="RAG Chatbot">
+    <h3>Project Overview</h3>
+    <p>A Retrieval-Augmented Generation chatbot developed as a real estate sales assistant integrated with WhatsApp.</p>
+    <h3>Key Features</h3>
+    <ul>
+      <li>Led development of a Retrieval-Augmented Generation chatbot as a real estate sales assistant</li>
+      <li>Integrated with WhatsApp Business API and automated workflows with n8n and OpenAI API</li>
+      <li>Improved client query resolution efficiency by 50% and boosted customer engagement</li>
+      <li>Designed custom knowledge base with google docs for accurate information retrieval</li>
+    </ul>
+    <h3>Technologies Used</h3>
+    <p>Python, Django, WhatsApp Business API, n8n, OpenAI API, RAG Architecture</p>
+  </div>
+</div>
+
+<div id="whatsapp-automation" class="portfolio-details">
+  <div class="portfolio-details-content">
+    <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
+    <h2>WhatsApp Group Management Automation</h2>
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="WhatsApp Automation">
+    <h3>Project Overview</h3>
+    <p>A Python automation system for managing WhatsApp groups with advanced features and Excel integration.</p>
+    <h3>Key Features</h3>
+    <ul>
+      <li>Built Python automation system using Selenium, Tkinter, and Pandas for WhatsApp group management</li>
+      <li>Reduced admin work time by 70% and eliminated manual errors with automated Excel imports</li>
+      <li>Reduced manual effort by 70% through automated member addition and message broadcasting</li>
+      <li>Developed user-friendly GUI with Tkinter for easy operation by non-technical users</li>
+    </ul>
+    <h3>Technologies Used</h3>
+    <p>Python, Selenium, Tkinter, Pandas, Excel Automation, WhatsApp Web</p>
+  </div>
+</div>
+
+<div id="house-price-predictor" class="portfolio-details">
+  <div class="portfolio-details-content">
+    <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
+    <h2>House Price Predictor (Django + ML)</h2>
+    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="House Price Predictor">
+    <h3>Project Overview</h3>
+    <p>A Django web application that predicts house prices using machine learning regression models.</p>
+    <h3>Key Features</h3>
+    <ul>
+      <li>Developed Django web app predicting house prices using regression models and Joblib serialization</li>
+      <li>Created responsive frontend for real-time predictions with PKR conversions</li>
+      <li>Trained on historical real estate data with high accuracy metrics</li>
+      <li>Feature importance analysis for understanding price factors</li>
+      <li>Interactive web interface for easy price estimation</li>
+    </ul>
+    <h3>Technologies Used</h3>
+    <p>Python, Django, Scikit-learn, Regression Models, Joblib, JavaScript, HTML/CSS</p>
+  </div>
+</div>
+
+<div id="imdb-clone" class="portfolio-details">
+  <div class="portfolio-details-content">
+    <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
+    <h2>IMDB Clone</h2>
+    <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="IMDB Clone">
+    <h3>Project Overview</h3>
+    <p>A Django web application for browsing movies and shows with comprehensive information and search functionality.</p>
+    <h3>Key Features</h3>
+    <ul>
+      <li>Developed Django web app for browsing movies and shows and their information</li>
+      <li>Designed movie database web app with dynamic API integration and search functionality</li>
+      <li>Rating and reviews for the movies</li>
+    </ul>
+    <h3>Technologies Used</h3>
+    <p>Django, Python, HTML/CSS, JavaScript, Bootstrap, Movie Database API</p>
+  </div>
+</div>
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>What I can offer</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-cpu"></i></div>
+              <h4><a href="">Machine Learning</a></h4>
+              <p>Development of predictive models, AI solutions, and data-driven applications using advanced algorithms</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-code-slash"></i></div>
+              <h4><a href="">Backend Development</a></h4>
+              <p>Building robust server-side applications, APIs, and database solutions with Django and Python</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-robot"></i></div>
+              <h4><a href="">Process Automation</a></h4>
+              <p>Creating automated workflows and systems to streamline operations and increase efficiency</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-database"></i></div>
+              <h4><a href="">Data Analysis</a></h4>
+              <p>Transforming raw data into actionable insights through visualization and statistical analysis</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-chat-dots"></i></div>
+              <h4><a href="">Chatbot Development</a></h4>
+              <p>Building intelligent conversational agents integrated with various platforms and APIs</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-puzzle"></i></div>
+              <h4><a href="">API Integration</a></h4>
+              <p>Connecting diverse systems and services through well-designed API interfaces and integrations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Services Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Get in touch with me</p>
+        </div>
+
+        <div class="row mt-1">
+          <div class="col-lg-12">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h3>Location:</h3>
+                <p>Islamabad, Pakistan</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h3>Email:</h3>
+                <p>wajahatgul2793@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h3>Phone:</h3>
+                <p>+92 340 9308229</p>
+              </div>
+
+              <div class="social-links mt-3">
+                <a href="https://www.linkedin.com/in/wajahatgul98" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/WajahatGul" target="_blank" class="github"><i class="bi bi-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+         
+          </div>
+        </div>
+      </div>
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>2025</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="#">Wajahat Gul</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      "use strict";
+      
+      // Mobile nav toggle
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      
+      if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', function(e) {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+      
+      // Typed.js initialization
+      if (document.querySelector('.typed')) {
+        var typed = new Typed('.typed', {
+          strings: document.querySelector('.typed').getAttribute('data-typed-items').split(','),
+          loop: true,
+          typeSpeed: 100,
+          backSpeed: 50,
+          backDelay: 2000
+        });
+      }
+      
+      // Init AOS
+      AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+      
+      // Init GLightbox
+      const glightbox = GLightbox({
+        selector: '.glightbox'
+      });
+    });
+
+    // Portfolio details functions
+    function showPortfolioDetails(id) {
+      document.getElementById(id).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePortfolioDetails() {
+      const details = document.querySelectorAll('.portfolio-details');
+      details.forEach(detail => {
+        detail.style.display = 'none';
+      });
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close portfolio details when clicking outside content
+    window.onclick = function(event) {
+      const details = document.querySelectorAll('.portfolio-details');
+      details.forEach(detail => {
+        if (event.target === detail) {
+          detail.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

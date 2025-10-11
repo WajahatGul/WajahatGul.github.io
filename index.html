@@ -262,39 +262,43 @@
       margin-bottom: 0;
     }
     
-    /* Skills Section */
-    .skills .progress {
-      height: 60px;
-      display: block;
-      background: #2c2f3f;
-      border-radius: 5px;
+    /* Skills Section - Updated Styles */
+    .skills .skill-category {
+      margin-bottom: 40px;
     }
     
-    .skills .progress .skill {
-      padding: 10px 0;
-      margin: 0;
-      text-transform: uppercase;
-      display: block;
-      font-weight: 600;
+    .skills .skill-category h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #2c2f3f;
+    }
+    
+    .skills .skill-item {
+      background: #2c2f3f;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .skills .skill-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(108, 43, 217, 0.3);
+    }
+    
+    .skills .skill-item h4 {
       color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
     }
     
-    .skills .progress .skill .val {
-      float: right;
-      font-style: normal;
-    }
-    
-    .skills .progress-bar-wrap {
-      background: #2c2f3f;
-      height: 10px;
-      border-radius: 5px;
-    }
-    
-    .skills .progress-bar {
-      height: 10px;
-      transition: .9s;
-      background-color: var(--primary);
-      border-radius: 5px;
+    .skills .skill-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0;
     }
     
     /* Resume Section */
@@ -882,49 +886,71 @@
           <p>Technical expertise and proficiency across various technologies and frameworks</p>
         </div>
 
-        <div class="row skills-content">
+        <div class="row">
           <div class="col-lg-6">
-            <div class="progress">
-              <span class="skill">Python <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="skill-category">
+              <h3>Programming Languages</h3>
+              <div class="skill-item">
+                <h4>Python</h4>
+                <p>Advanced proficiency in Python for data science, machine learning, and backend development</p>
+              </div>
+              <div class="skill-item">
+                <h4>JavaScript</h4>
+                <p>Experience with frontend development and interactive web applications</p>
+              </div>
+              <div class="skill-item">
+                <h4>C++</h4>
+                <p>Fundamental knowledge for algorithm implementation and performance optimization</p>
               </div>
             </div>
 
-            <div class="progress">
-              <span class="skill">Django <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="skill-category">
+              <h3>Machine Learning & AI</h3>
+              <div class="skill-item">
+                <h4>Machine Learning Algorithms</h4>
+                <p>Implementation of regression, classification, clustering, and neural networks</p>
               </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Machine Learning <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="skill-item">
+                <h4>Data Science</h4>
+                <p>Data analysis, visualization, and predictive modeling using Python libraries</p>
+              </div>
+              <div class="skill-item">
+                <h4>Natural Language Processing</h4>
+                <p>Text processing, sentiment analysis, and chatbot development</p>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6">
-            <div class="progress">
-              <span class="skill">JavaScript <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="skill-category">
+              <h3>Frameworks & Libraries</h3>
+              <div class="skill-item">
+                <h4>Django</h4>
+                <p>Full-stack web development with Django framework and REST APIs</p>
+              </div>
+              <div class="skill-item">
+                <h4>Scikit-learn</h4>
+                <p>Machine learning model development and evaluation</p>
+              </div>
+              <div class="skill-item">
+                <h4>Pandas & NumPy</h4>
+                <p>Data manipulation, analysis, and numerical computing</p>
               </div>
             </div>
 
-            <div class="progress">
-              <span class="skill">API Integration <i class="val">88%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="skill-category">
+              <h3>Tools & Technologies</h3>
+              <div class="skill-item">
+                <h4>API Integration</h4>
+                <p>RESTful API development and third-party service integration</p>
               </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Automation <i class="val">92%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="skill-item">
+                <h4>Automation</h4>
+                <p>Workflow automation using Python scripts and tools like Selenium</p>
+              </div>
+              <div class="skill-item">
+                <h4>Git & GitHub</h4>
+                <p>Version control and collaborative development workflows</p>
               </div>
             </div>
           </div>

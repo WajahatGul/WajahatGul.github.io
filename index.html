@@ -1,1536 +1,1317 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wajahat Gul - Machine Learning & Python Developer</title>
-
-  <!-- Favicons -->
-  <!-- <link href="img/favicon.png" rel="icon"> -->
-  <!-- <link href="img/apple-touch-icon.png" rel="apple-touch-icon"> -->
-
-  <!-- Fonts -->
+  <title>Wajahat Gul — AI Engineer & Data Scientist</title>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
   <style>
     :root {
-      --primary: #6c2bd9;
-      --primary-dark: #5520b5;
-      --secondary: #ff6b6b;
-      --dark: #121212;
-      --dark-light: #1e1e1e;
-      --light: #f8f9fa;
-      --gray: #6c757d;
-      --text-light: #f8f9fa;
-      --text-muted: #a0a0a0;
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --bg3: #16161f;
+      --card: #1a1a24;
+      --card2: #1f1f2e;
+      --accent: #00d4ff;
+      --accent2: #7c3aed;
+      --accent3: #f59e0b;
+      --text: #e8e8f0;
+      --muted: #7070a0;
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(0,212,255,0.2);
     }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: "Poppins", sans-serif;
-      background-color: var(--dark);
-      color: var(--text-light);
-      line-height: 1.6;
+      font-family: "DM Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
+    h1,h2,h3,h4,h5 { font-family: "Syne", sans-serif; font-weight: 700; }
+    code, .mono { font-family: "Space Mono", monospace; }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Raleway", sans-serif;
-      font-weight: 700;
-    }
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 2px; }
 
-    /* Header Styles */
-    .header {
-      background-color: var(--dark-light);
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 250px;
-      transition: all 0.3s;
-      z-index: 999;
-      padding: 0 15px;
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0; width: 260px;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      z-index: 900; padding: 0;
       overflow-y: auto;
     }
-
-    .profile-img {
+    .sidebar-top {
+      padding: 32px 20px 24px;
+      border-bottom: 1px solid var(--border);
       text-align: center;
-      margin: 20px 0;
     }
-
-    .profile-img img {
-      width: 150px;
-      height: 150px;
-      border: 8px solid #2c2f3f;
+    .profile-ring {
+      width: 110px; height: 110px;
       border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .logo {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .sitename {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--text-light);
-      margin: 0;
-    }
-
-    .social-links {
-      padding: 0 0 20px 0;
-      text-align: center;
-    }
-
-    .social-links a {
-      font-size: 18px;
-      display: inline-block;
-      background: #2c2f3f;
-      color: var(--text-light);
-      line-height: 1;
-      padding: 8px 0;
-      margin: 0 4px;
-      border-radius: 50%;
-      text-align: center;
-      width: 36px;
-      height: 36px;
-      transition: 0.3s;
-    }
-
-    .social-links a:hover {
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .navmenu {
-      padding: 0;
-      margin: 0;
-    }
-
-    .navmenu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .navmenu a {
-      display: flex;
-      align-items: center;
-      color: #a8a9b4;
-      padding: 12px 15px;
-      margin-bottom: 8px;
-      transition: 0.3s;
-      font-size: 15px;
-      border-radius: 5px;
-    }
-
-    .navmenu a i {
-      font-size: 24px;
-      padding-right: 8px;
-      color: #6f7180;
-    }
-
-    .navmenu a:hover,
-    .navmenu a.active {
-      text-decoration: none;
-      color: var(--text-light);
-      background: #2c2f3f;
-    }
-
-    .navmenu a:hover i,
-    .navmenu a.active i {
-      color: var(--primary);
-    }
-
-    /* Main Content */
-    .main {
-      margin-left: 300px;
-    }
-
-    /* Section Styles */
-    section {
-      padding: 60px 0;
-      overflow: hidden;
-    }
-
-    .section-title {
-      padding-bottom: 30px;
-    }
-
-    .section-title h2 {
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      position: relative;
-      color: var(--text-light);
-    }
-
-    .section-title h2::after {
-      content: '';
-      position: absolute;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      padding: 3px; margin: 0 auto 14px;
       display: block;
-      width: 50px;
-      height: 3px;
-      background: var(--primary);
-      bottom: 0;
-      left: 0;
+    }
+    .profile-ring img {
+      width: 100%; height: 100%;
+      border-radius: 50%; object-fit: cover;
+      display: block;
+      border: 3px solid var(--bg2);
+    }
+    .sidebar-name {
+      font-size: 1.25rem; font-weight: 800;
+      color: var(--text); margin-bottom: 4px;
+      font-family: "Syne", sans-serif;
+    }
+    .sidebar-role {
+      font-size: 0.72rem; color: var(--accent);
+      font-family: "Space Mono", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .sidebar-socials {
+      display: flex; justify-content: center; gap: 10px;
+      margin-top: 14px;
+    }
+    .sidebar-socials a {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 15px;
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+    .sidebar-socials a:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .nav-menu { padding: 16px 12px; flex: 1; }
+    .nav-menu a {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--muted); padding: 10px 12px;
+      border-radius: 8px; text-decoration: none;
+      font-size: 0.88rem; font-weight: 500;
+      transition: all 0.2s; margin-bottom: 2px;
+      border: 1px solid transparent;
+    }
+    .nav-menu a i { font-size: 17px; width: 20px; }
+    .nav-menu a:hover, .nav-menu a.active {
+      color: var(--text);
+      background: rgba(0,212,255,0.07);
+      border-color: var(--border2);
+    }
+    .nav-menu a:hover i, .nav-menu a.active i { color: var(--accent); }
+    .sidebar-status {
+      margin: 0 12px 16px;
+      padding: 10px 14px;
+      background: rgba(0,212,255,0.05);
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: 8px;
+      font-size: 0.78rem; color: var(--muted);
+    }
+    .status-dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; background: #22c55e;
+      margin-right: 6px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* ── MAIN ── */
+    .main { margin-left: 260px; }
+    section { padding: 80px 60px; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+
+    /* ── SECTION TITLE ── */
+    .sec-label {
+      font-family: "Space Mono", monospace;
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: 2.2rem; font-weight: 800;
+      color: var(--text); margin-bottom: 8px;
+      line-height: 1.15;
+    }
+    .sec-line {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px; margin-bottom: 40px;
     }
 
-    .section-title p {
-      margin-bottom: 0;
-      color: var(--text-muted);
-    }
-
-    /* Hero Section */
-    .hero {
-      width: 100%;
-      height: 100vh;
-      background: url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80") top center;
-      background-size: cover;
-      position: relative;
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
       padding: 0;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
     }
-
-    .hero:before {
-      content: "";
-      background: rgba(0, 0, 0, 0.7);
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80") center/cover no-repeat;
+      filter: brightness(0.15) saturate(0.3);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .hero-glow {
       position: absolute;
-      bottom: 0;
-      top: 0;
-      left: 0;
-      right: 0;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
     }
-
-    .hero .container {
-
-      position: relative;
-      padding-top: 110px;
-      text-align: center;
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 100px 60px;
+      max-width: 900px;
     }
-
-    .hero h2 {
-      margin: 0;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--text-light);
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: "Space Mono", monospace;
+      font-size: 0.72rem; color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
     }
-
-    .hero p {
-      color: var(--text-light);
-      margin: 15px 0 0 0;
-      font-size: 26px;
+    .hero-name {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 800; line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 16px;
     }
-
-    .hero p span {
-      color: var(--primary);
-      letter-spacing: 1px;
+    .hero-name span { color: var(--accent); }
+    .hero-typed-wrap {
+      font-size: 1.4rem; color: var(--muted);
+      margin-bottom: 28px; font-weight: 300;
     }
-
-    /* About Section */
-    .about .content h3 {
-      font-weight: 700;
-      font-size: 26px;
-      color: var(--primary);
-    }
-
-    .about .content ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .about .content ul li {
-      margin-bottom: 20px;
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .about .content ul strong {
-      margin-right: 10px;
-      color: var(--primary);
-    }
-
-    .about .content p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Skills Section - Updated Styles */
-    .skills .skill-category {
+    .hero-typed-wrap .typed { color: var(--accent2); font-weight: 500; }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 600px; line-height: 1.8;
       margin-bottom: 40px;
     }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary-custom {
+      padding: 13px 28px;
+      background: var(--accent);
+      color: var(--bg); font-weight: 600;
+      border: none; border-radius: 8px;
+      text-decoration: none; font-size: 0.9rem;
+      font-family: "Syne", sans-serif;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary-custom:hover { background: #00b8d9; color: var(--bg); transform: translateY(-2px); }
+    .btn-outline-custom {
+      padding: 13px 28px;
+      background: transparent;
+      color: var(--text); font-weight: 500;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      text-decoration: none; font-size: 0.9rem;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline-custom:hover { background: rgba(0,212,255,0.07); color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex; gap: 40px;
+      margin-top: 50px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: "Syne", sans-serif;
+      font-size: 2rem; font-weight: 800;
+      color: var(--accent); display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.8rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
 
-    .skills .skill-category h3 {
-      color: var(--primary);
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 60px; align-items: start; }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap img {
+      width: 100%; border-radius: 12px;
+      filter: grayscale(20%);
+    }
+    .about-img-border {
+      position: absolute; inset: -8px;
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+    .about-badge {
+      position: absolute; bottom: -16px; right: -16px;
+      background: var(--accent2);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-family: "Syne", sans-serif;
+      font-size: 0.82rem; font-weight: 700;
+    }
+    .about-info-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin: 28px 0;
+    }
+    .about-info-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 14px;
+    }
+    .about-info-item .label {
+      font-size: 0.7rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      font-family: "Space Mono", monospace;
+      margin-bottom: 4px;
+    }
+    .about-info-item .value { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+    .about-para { color: var(--muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 16px; }
+
+    /* ── RESUME DOWNLOAD CARDS ── */
+    .resume-dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .resume-dl-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+      text-decoration: none; color: inherit;
+      display: flex; align-items: center; gap: 14px;
+      transition: all 0.25s;
+    }
+    .resume-dl-card:hover { border-color: var(--accent); background: rgba(0,212,255,0.05); color: var(--text); transform: translateY(-3px); }
+    .resume-dl-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .resume-dl-icon.ai { background: rgba(124,58,237,0.15); color: var(--accent2); border: 1px solid rgba(124,58,237,0.3); }
+    .resume-dl-icon.ds { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.25); }
+    .resume-dl-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .resume-dl-sub { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .skill-cat-title {
+      font-size: 0.75rem;
+      font-family: "Space Mono", monospace;
+      color: var(--accent); letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
       padding-bottom: 10px;
-      border-bottom: 2px solid #2c2f3f;
+      border-bottom: 1px solid var(--border);
     }
-
-    .skills .skill-item {
-      background: #2c2f3f;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 15px;
-      transition: all 0.3s ease;
-      border-left: 4px solid var(--primary);
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px; padding: 6px 12px;
+      font-size: 0.82rem; color: var(--text);
+      transition: all 0.2s;
     }
+    .skill-tag:hover { border-color: var(--accent2); color: var(--accent2); background: rgba(124,58,237,0.07); }
+    .skill-tag.hot { border-color: rgba(0,212,255,0.3); color: var(--accent); background: rgba(0,212,255,0.06); }
 
-    .skills .skill-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(108, 43, 217, 0.3);
+    /* ── EXPERIENCE / EDUCATION TIMELINE ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 8px; top: 8px; bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
     }
-
-    .skills .skill-item h4 {
-      color: var(--text-light);
-      font-size: 1.1rem;
-      margin-bottom: 10px;
+    .tl-item { position: relative; margin-bottom: 40px; }
+    .tl-dot {
+      position: absolute; left: -24px; top: 5px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg);
     }
-
-    .skills .skill-item p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin: 0;
-    }
-
-    /* Resume Section */
-    .resume .resume-title {
-      font-size: 26px;
-      font-weight: 700;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      color: var(--text-light);
-    }
-
-    .resume .resume-item {
-      padding: 0 0 20px 20px;
-      margin-top: -2px;
-      border-left: 2px solid var(--primary);
-      position: relative;
-    }
-
-    .resume .resume-item h4 {
-      line-height: 18px;
-      font-size: 18px;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .resume .resume-item h5 {
-      font-size: 16px;
-      background: #2c2f3f;
-      padding: 5px 15px;
+    .tl-dot.purple { border-color: var(--accent2); }
+    .tl-date {
+      font-family: "Space Mono", monospace;
+      font-size: 0.7rem; color: var(--accent);
+      letter-spacing: 0.06em; margin-bottom: 6px;
       display: inline-block;
-      font-weight: 600;
-      margin-bottom: 10px;
-      border-radius: 4px;
+      background: rgba(0,212,255,0.07);
+      border: 1px solid rgba(0,212,255,0.15);
+      padding: 3px 10px; border-radius: 100px;
     }
+    .tl-date.purple { color: var(--accent2); background: rgba(124,58,237,0.07); border-color: rgba(124,58,237,0.2); }
+    .tl-title { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .tl-org { font-size: 0.85rem; color: var(--accent2); margin-bottom: 10px; font-weight: 500; }
+    .tl-bullets { padding-left: 16px; }
+    .tl-bullets li { font-size: 0.88rem; color: var(--muted); margin-bottom: 6px; line-height: 1.6; }
 
-    .resume .resume-item::before {
-      content: "";
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      border-radius: 50px;
-      left: -9px;
-      top: 0;
-      background: #fff;
-      border: 2px solid var(--primary);
+    /* ── CERTIFICATIONS ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px;
+      text-decoration: none; color: inherit;
+      transition: all 0.25s;
+      display: block;
     }
+    .cert-card:hover { border-color: var(--accent3); transform: translateY(-4px); background: rgba(245,158,11,0.04); color: var(--text); }
+    .cert-icon { font-size: 28px; color: var(--accent3); margin-bottom: 12px; }
+    .cert-name { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+    .cert-meta { font-size: 0.78rem; color: var(--muted); font-family: "Space Mono", monospace; }
 
-    /* Certifications Section */
-    .certifications {
-      padding: 60px 0;
-    }
-
-    .certifications .card {
-      background: #2c2f3f;
-      border: none;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      transition: 0.3s;
-    }
-
-    .certifications .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(108, 43, 217, 0.3);
-    }
-
-    .certifications a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .certifications .card h5 {
-      color: var(--text-light);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .certifications .card p {
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    /* Portfolio Section */
-    .portfolio .portfolio-item {
-      margin-bottom: 30px;
-    }
-
-    .portfolio-wrap {
-      transition: 0.3s;
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      background: #2c2f3f;
-      z-index: 1;
-    }
-
-    .portfolio-wrap::before {
-      content: "";
-      background: rgba(0, 0, 0, 0.6);
-      position: absolute;
-      left: 30px;
-      right: 30px;
-      top: 30px;
-      bottom: 30px;
-      transition: all ease-in-out 0.3s;
-      z-index: 2;
-      opacity: 0;
-    }
-
-    .portfolio-wrap img {
-      transition: all ease-in-out 0.3s;
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .portfolio-wrap .portfolio-info {
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      text-align: center;
-      z-index: 3;
-      transition: all ease-in-out 0.3s;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .portfolio-wrap .portfolio-info h4 {
-      font-size: 20px;
-      color: var(--text-light);
-      font-weight: 600;
-    }
-
-    .portfolio-wrap .portfolio-info p {
-      color: var(--text-light);
-      font-size: 14px;
-      text-transform: uppercase;
-      padding: 0;
-      margin: 0;
-    }
-
-    .portfolio-wrap .portfolio-links {
-      text-align: center;
-      z-index: 4;
-    }
-
-    .portfolio-wrap .portfolio-links a {
-      color: var(--text-light);
-      margin: 0 5px;
-      font-size: 28px;
-      display: inline-block;
-      transition: 0.3s;
-    }
-
-    .portfolio-wrap .portfolio-links a:hover {
-      color: var(--primary);
-    }
-
-    .portfolio-wrap:hover::before {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      opacity: 1;
-    }
-
-    .portfolio-wrap:hover img {
-      transform: scale(1.1);
-    }
-
-    .portfolio-wrap:hover .portfolio-info {
-      opacity: 1;
-    }
-
-    /* Portfolio Details Modal */
-    .portfolio-details {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 9999;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .portfolio-details-content {
-      background-color: var(--dark-light);
-      margin: 50px auto;
-      padding: 30px;
-      border-radius: 8px;
-      max-width: 900px;
-      position: relative;
-    }
-
-    .portfolio-details-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 24px;
-      color: var(--text-light);
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
       cursor: pointer;
-      z-index: 10;
+      transition: all 0.3s;
+      position: relative;
     }
-
-    .portfolio-details-close:hover {
-      color: var(--primary);
+    .proj-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .proj-img { position: relative; overflow: hidden; height: 180px; }
+    .proj-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; filter: saturate(0.7); }
+    .proj-card:hover .proj-img img { transform: scale(1.08); filter: saturate(1); }
+    .proj-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(26,26,36,0.95) 100%);
     }
-
-    .portfolio-details h2 {
-      color: var(--primary);
-      margin-bottom: 20px;
+    .proj-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid var(--border);
+      border-radius: 100px; padding: 4px 10px;
+      font-size: 0.68rem; color: var(--muted);
+      font-family: "Space Mono", monospace;
+      backdrop-filter: blur(8px);
     }
-
-    .portfolio-details img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 20px;
+    .proj-badge.featured { border-color: var(--accent3); color: var(--accent3); }
+    .proj-body { padding: 18px; }
+    .proj-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .proj-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .proj-tag {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 4px; padding: 3px 8px;
+      font-size: 0.7rem; color: var(--muted);
+      font-family: "Space Mono", monospace;
     }
-
-    .portfolio-details h3 {
-      color: var(--text-light);
-      margin-top: 20px;
-      margin-bottom: 10px;
+    .proj-footer {
+      padding: 12px 18px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
     }
+    .proj-view { font-size: 0.78rem; color: var(--accent); font-weight: 500; }
 
-    .portfolio-details ul {
-      padding-left: 20px;
-      color: var(--text-muted);
+    /* ── SERVICES ── */
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .svc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px 22px;
+      transition: all 0.3s;
     }
-
-    .portfolio-details ul li {
-      margin-bottom: 10px;
+    .svc-card:hover { border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.05); transform: translateY(-4px); }
+    .svc-icon {
+      width: 50px; height: 50px;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--accent);
+      margin-bottom: 18px;
     }
+    .svc-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .svc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
 
-    /* Services Section */
-    .services .icon-box {
-      text-align: center;
-      background: #2c2f3f;
-      padding: 80px 20px;
-      transition: all ease-in-out 0.3s;
-      border-radius: 8px;
-      height: 100%;
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; margin-bottom: 14px;
+      text-decoration: none; color: inherit;
+      transition: all 0.2s;
     }
-
-    .services .icon-box .icon {
-      margin: 0 auto;
-      width: 64px;
-      height: 64px;
-      background: var(--primary);
-      border-radius: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      transition: ease-in-out 0.3s;
-      color: var(--text-light);
-      font-size: 28px;
+    .contact-item:hover { border-color: var(--border2); color: var(--text); }
+    .contact-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--accent);
+      flex-shrink: 0;
     }
-
-    .services .icon-box h4 {
-      font-weight: 700;
-      margin-bottom: 15px;
-      font-size: 24px;
-      color: var(--text-light);
-      transition: ease-in-out 0.3s;
+    .contact-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: "Space Mono", monospace; }
+    .contact-value { font-size: 0.92rem; color: var(--text); font-weight: 500; margin-top: 2px; }
+    .contact-cta {
+      background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(124,58,237,0.08));
+      border: 1px solid var(--border2);
+      border-radius: 16px; padding: 32px;
     }
+    .contact-cta h3 { font-size: 1.5rem; margin-bottom: 10px; }
+    .contact-cta p { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
 
-    .services .icon-box p {
-      line-height: 24px;
-      font-size: 14px;
-      margin-bottom: 0;
-      color: var(--text-muted);
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85); z-index: 9999;
+      overflow-y: auto; padding: 40px 20px;
+      backdrop-filter: blur(6px);
     }
-
-    .services .icon-box:hover {
-      background: var(--primary);
+    .modal-box {
+      background: var(--bg2);
+      border: 1px solid rgba(0,212,255,0.15);
+      max-width: 820px; margin: 0 auto;
+      border-radius: 16px; overflow: hidden;
+      position: relative;
     }
-
-    .services .icon-box:hover h4,
-    .services .icon-box:hover .icon {
-      color: #fff;
-    }
-
-    /* Contact Section */
-    .contact .info {
-      padding: 30px;
-      background: #2c2f3f;
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .contact .info i {
-      font-size: 20px;
-      color: var(--primary);
-      float: left;
-      width: 44px;
-      height: 44px;
-      background: #3a3d4d;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50px;
-      transition: all 0.3s ease-in-out;
-      margin-right: 15px;
-    }
-
-    .contact .info h4 {
-      padding: 0 0 0 60px;
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 5px;
-      color: var(--text-light);
-    }
-
-    .contact .info p {
-      padding: 0 0 0 60px;
-      margin-bottom: 20px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .contact .info .email p {
-      padding-top: 5px;
-    }
-
-    .contact .info .social-links {
-      padding-left: 60px;
-    }
-
-    .contact .info .social-links a {
-      font-size: 18px;
-      display: inline-block;
-      background: #333;
-      color: #fff;
+    .modal-img { width: 100%; height: 260px; object-fit: cover; filter: saturate(0.7); }
+    .modal-body { padding: 32px; }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      font-size: 26px; color: var(--text);
+      cursor: pointer; z-index: 10;
+      width: 36px; height: 36px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
       line-height: 1;
-      padding: 8px 0;
-      border-radius: 50%;
-      text-align: center;
-      width: 36px;
-      height: 36px;
-      transition: 0.3s;
-      margin-right: 10px;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--accent); }
+    .modal-title { font-size: 1.5rem; color: var(--accent); margin-bottom: 20px; }
+    .modal-section-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); font-family: "Space Mono", monospace; margin: 20px 0 10px; }
+    .modal-p { font-size: 0.92rem; color: var(--muted); line-height: 1.75; }
+    .modal-ul { padding-left: 18px; }
+    .modal-ul li { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; line-height: 1.6; }
+    .modal-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .modal-tech span {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 6px; padding: 5px 12px;
+      font-family: "Space Mono", monospace; font-size: 0.75rem; color: var(--accent);
+    }
+    .modal-github-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px; padding: 10px 20px;
+      background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25);
+      border-radius: 8px; color: var(--accent);
+      text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .modal-github-btn:hover { background: rgba(0,212,255,0.2); color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-left: 260px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 24px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.82rem; color: var(--muted);
     }
 
-    .contact .info .social-links a:hover {
-      background: var(--primary);
-      color: #fff;
+    /* ── MOBILE NAV ── */
+    .mob-toggle {
+      display: none; position: fixed;
+      top: 14px; right: 14px; z-index: 9998;
+      width: 40px; height: 40px;
+      background: var(--accent2); color: #fff;
+      border: none; border-radius: 50%;
+      font-size: 20px; cursor: pointer;
+      align-items: center; justify-content: center;
     }
-
-    .contact .php-email-form {
-      width: 100%;
-      padding: 30px;
-      background: #2c2f3f;
-      border-radius: 8px;
-    }
-
-    .contact .php-email-form .form-group {
-      padding-bottom: 8px;
-    }
-
-    .contact .php-email-form .error-message {
-      display: none;
-      color: #fff;
-      background: #ed3c0d;
-      text-align: left;
-      padding: 15px;
-      font-weight: 600;
-    }
-
-    .contact .php-email-form .error-message br+br {
-      margin-top: 25px;
-    }
-
-    .contact .php-email-form .sent-message {
-      display: none;
-      color: #fff;
-      background: #18d26e;
-      text-align: center;
-      padding: 15px;
-      font-weight: 600;
-    }
-
-    .contact .php-email-form .loading {
-      display: none;
-      background: #2c2f3f;
-      text-align: center;
-      padding: 15px;
-    }
-
-    .contact .php-email-form .loading:before {
-      content: "";
-      display: inline-block;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      margin: 0 10px -6px 0;
-      border: 3px solid #18d26e;
-      border-top-color: #eee;
-      animation: animate-loading 1s linear infinite;
-    }
-
-    .contact .php-email-form input,
-    .contact .php-email-form textarea {
-      border-radius: 4px;
-      box-shadow: none;
-      font-size: 14px;
-      background: #3a3d4d;
-      border: 0;
-      color: var(--text-light);
-    }
-
-    .contact .php-email-form input:focus,
-    .contact .php-email-form textarea:focus {
-      background-color: #454859;
-    }
-
-    .contact .php-email-form input {
-      height: 44px;
-    }
-
-    .contact .php-email-form textarea {
-      padding: 10px 12px;
-    }
-
-    .contact .php-email-form button[type="submit"] {
-      background: var(--primary);
-      border: 0;
-      padding: 10px 24px;
-      color: #fff;
-      transition: 0.4s;
-      border-radius: 4px;
-    }
-
-    .contact .php-email-form button[type="submit"]:hover {
-      background: #5a20c4;
-    }
-
-    @keyframes animate-loading {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* Footer */
-    .footer {
-      background: #2c2f3f;
-      padding: 30px 0;
-      color: var(--text-light);
-      font-size: 14px;
-      margin-left: 300px;
-    }
-
-    .footer .copyright {
-      text-align: center;
-    }
-
-    .footer .credits {
-      text-align: center;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .footer .credits a {
-      color: var(--primary);
-    }
-
-    /* Responsive */
     @media (max-width: 1199px) {
-      .header {
-        left: -300px;
-      }
-
-      .main {
-        margin-left: 0;
-      }
+      .sidebar { left: -280px; transition: left 0.3s; }
+      .sidebar.open { left: 0; }
+      .main { margin-left: 0; }
+      footer { margin-left: 0; }
+      .mob-toggle { display: flex; }
+      section { padding: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img-wrap { max-width: 280px; }
+      .projects-grid, .services-grid, .cert-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
     }
-
-    @media (max-width: 991px) {
-      .hero {
-        height: auto;
-        padding: 80px 0 60px 0;
-      }
-
-      .hero .container {
-        padding-top: 60px;
-      }
-    }
-
-    /* Mobile Nav Toggle */
-    .mobile-nav-toggle {
-      position: fixed;
-      right: 15px;
-      top: 15px;
-      z-index: 9998;
-      border: 0;
-      font-size: 24px;
-      transition: all 0.4s;
-      outline: none !important;
-      background-color: var(--primary);
-      color: #fff;
-      width: 40px;
-      height: 40px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 0;
-      border-radius: 50px;
-      cursor: pointer;
-    }
-
-    .mobile-nav-active .header {
-      left: 0;
+    @media (max-width: 640px) {
+      .projects-grid, .services-grid, .cert-grid, .skills-grid, .resume-dl-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 24px; }
+      .hero-content { padding: 80px 24px 50px; }
+      .sec-title { font-size: 1.7rem; }
     }
   </style>
 </head>
+<body>
 
-<body class="index-page">
+<button class="mob-toggle" id="mobToggle"><i class="bi bi-list"></i></button>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <header id="header" class="header d-flex flex-column">
-    <div class="profile-img">
-      <img src="img/profile_image.jpg" alt="Wajahat Gul" class="img-fluid rounded-circle">
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <span class="profile-ring">
+      <img src="img/profile_image.jpg" alt="Wajahat Gul">
+    </span>
+    <div class="sidebar-name">Wajahat Gul</div>
+    <div class="sidebar-role">// AI Engineer · ML · Backend</div>
+    <div class="sidebar-socials">
+      <a href="https://www.linkedin.com/in/wajahatgul98" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/WajahatGul" target="_blank"><i class="bi bi-github"></i></a>
+      <a href="mailto:wajahatgul2793@gmail.com"><i class="bi bi-envelope"></i></a>
     </div>
+  </div>
+  <nav class="nav-menu">
+    <a href="#hero" class="active"><i class="bi bi-house"></i> Home</a>
+    <a href="#about"><i class="bi bi-person"></i> About</a>
+    <a href="#skills"><i class="bi bi-cpu"></i> Skills</a>
+    <a href="#resume"><i class="bi bi-file-earmark-text"></i> Resume</a>
+    <a href="#certifications"><i class="bi bi-award"></i> Certifications</a>
+    <a href="#portfolio"><i class="bi bi-grid-1x2"></i> Projects</a>
+    <a href="#services"><i class="bi bi-lightning"></i> Services</a>
+    <a href="#contact"><i class="bi bi-send"></i> Contact</a>
+  </nav>
+  <div class="sidebar-status">
+    <span class="status-dot"></span>
+    Available for opportunities
+  </div>
+</aside>
 
-    <a href="#hero" class="logo d-flex align-items-center justify-content-center" style="text-decoration: none;">
-      <h1 class="sitename">Wajahat Gul</h1>
-    </a>
+<!-- MAIN -->
+<main class="main">
 
-    <div class="social-links text-center">
-      <a href="https://www.linkedin.com/in/wajahatgul98" target="_blank" class="linkedin"><i
-          class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/WajahatGul" target="_blank" class="github"><i class="bi bi-github"></i></a>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wajahatgul2793@gmail.com" class="email"><i
-          class="bi bi-envelope"></i></a>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content" data-aos="fade-up">
+      <div class="hero-tag">
+        <span class="status-dot"></span>
+        Open to AI / DS Roles &amp; Internships
+      </div>
+      <h1 class="hero-name">Wajahat<br><span>Gul</span></h1>
+      <div class="hero-typed-wrap">
+        I build &nbsp;<span class="typed" data-typed-items="RAG Pipelines,LLM-powered Apps,ML Systems,Automation Tools,Backend APIs,Computer Vision Models"></span>
+      </div>
+      <p class="hero-desc">
+        AI Engineer specializing in RAG pipelines, LLM integration, and backend automation. Delivered production WhatsApp chatbots, end-to-end ML systems, and workflow automation tools. Skilled in prompt engineering, vector search, and scalable API development.
+      </p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn-primary-custom"><i class="bi bi-grid-1x2"></i> View Projects</a>
+        <a href="#contact" class="btn-outline-custom"><i class="bi bi-send"></i> Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <span class="hero-stat-num">2+</span>
+          <span class="hero-stat-label">Internships</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">10+</span>
+          <span class="hero-stat-label">Projects</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">3</span>
+          <span class="hero-stat-label">Certifications</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="#certifications"><i class="bi bi-award navicon"></i> Certifications</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Projects</a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
-      <div class="container" data-aos="fade-up">
-        <h2>Wajahat Gul</h2>
-        <p>I'm <span class="typed"
-            data-typed-items="Machine Learning Engineer, Python Developer, Backend Developer, AI Enthusiast"></span></p>
+  <!-- ABOUT -->
+  <section id="about" data-aos="fade-up">
+    <div class="sec-label">// 01. about</div>
+    <h2 class="sec-title">About Me</h2>
+    <div class="sec-line"></div>
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="img/profile_image.jpg" alt="Wajahat Gul">
+        <div class="about-img-border"></div>
+        <div class="about-badge">BS Computer Science<br>Bahria University</div>
       </div>
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Innovative Machine Learning and Backend Developer with experience in Python, Django, and automation.
-            Skilled in designing AI solutions, API integrations, and data-driven applications.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4">
-            <img src="img/profile_image.jpg" class="img-fluid rounded" alt="Wajahat Gul">
+      <div>
+        <p class="about-para">
+          AI Engineer and Data Scientist with hands-on experience building production-grade RAG pipelines, LLM integrations, predictive ML models, and backend automation systems. Final-year BS Computer Science student at Bahria University, Islamabad.
+        </p>
+        <p class="about-para">
+          Delivered real-world solutions for clients — from WhatsApp AI sales assistants to data analytics dashboards and military-grade object detection systems. I specialize in bridging the gap between cutting-edge AI research and practical, deployable products.
+        </p>
+        <div class="about-info-grid">
+          <div class="about-info-item">
+            <div class="label">Email</div>
+            <div class="value">wajahatgul2793@gmail.com</div>
           </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Machine Learning &amp; Python Developer</h3>
-            <p class="fst-italic">
-              Strong foundation in Python and Data Science with hands-on experience in automation, chatbots, and
-              predictive analytics.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>wajahatgul2793@gmail.com</span>
-                  </li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+92 340 9308229</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Islamabad, Pakistan</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor of Computer
-                      Science</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Open to Jobs:</strong> <span>Available</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Experience:</strong> <span>2+ years</span></li>
-                </ul>
-              </div>
-            </div>
-            <p>
-              I specialize in creating intelligent solutions that bridge the gap between data and actionable insights.
-              My expertise spans machine learning algorithms, backend development, and process automation, with a focus
-              on delivering efficient and scalable applications.
-            </p>
+          <div class="about-info-item">
+            <div class="label">Phone</div>
+            <div class="value">+92 318 541 9281</div>
+          </div>
+          <div class="about-info-item">
+            <div class="label">Location</div>
+            <div class="value">Islamabad, Pakistan</div>
+          </div>
+          <div class="about-info-item">
+            <div class="label">Degree</div>
+            <div class="value">BS Computer Science</div>
+          </div>
+          <div class="about-info-item">
+            <div class="label">Graduation</div>
+            <div class="value">Dec 2026</div>
+          </div>
+          <div class="about-info-item">
+            <div class="label">Status</div>
+            <div class="value" style="color:#22c55e">✓ Open to Hire</div>
           </div>
         </div>
-      </div>
-    </section><!-- /About Section -->
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>Technical expertise and proficiency across various technologies and frameworks</p>
+        <!-- RESUME DOWNLOAD CARDS -->
+        <div style="margin-top:8px; margin-bottom:6px; font-size:0.78rem; color:var(--muted); font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:0.1em;">
+          Download Resume
         </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="skill-category">
-              <h3>Programming Languages</h3>
-              <div class="skill-item">
-                <h4>Python</h4>
-                <p>Advanced proficiency in Python for data science, machine learning, and backend development</p>
-              </div>
-              <div class="skill-item">
-                <h4>JavaScript</h4>
-                <p>Experience with frontend development and interactive web applications</p>
-              </div>
-              <div class="skill-item">
-                <h4>C++</h4>
-                <p>Fundamental knowledge for algorithm implementation and performance optimization</p>
-              </div>
+        <div class="resume-dl-grid">
+          <a href="resume/Wajahat's Resume_AI.pdf" target="_blank" class="resume-dl-card">
+            <div class="resume-dl-icon ai"><i class="bi bi-robot"></i></div>
+            <div>
+              <div class="resume-dl-title">AI Engineer</div>
+              <div class="resume-dl-sub">RAG · LLM · Automation</div>
             </div>
-
-            <div class="skill-category">
-              <h3>Machine Learning & AI</h3>
-              <div class="skill-item">
-                <h4>Machine Learning Algorithms</h4>
-                <p>Implementation of regression, classification, clustering, and neural networks</p>
-              </div>
-              <div class="skill-item">
-                <h4>Data Science</h4>
-                <p>Data analysis, visualization, and predictive modeling using Python libraries</p>
-              </div>
-              <div class="skill-item">
-                <h4>Natural Language Processing</h4>
-                <p>Text processing, sentiment analysis, and chatbot development</p>
-              </div>
+            <i class="bi bi-download ms-auto" style="color:var(--muted);font-size:14px;"></i>
+          </a>
+          <a href="resume/Wajahat's resume_DS.pdf" target="_blank" class="resume-dl-card">
+            <div class="resume-dl-icon ds"><i class="bi bi-bar-chart-line"></i></div>
+            <div>
+              <div class="resume-dl-title">Data Scientist</div>
+              <div class="resume-dl-sub">ML · Analytics · Modeling</div>
             </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="skill-category">
-              <h3>Frameworks & Libraries</h3>
-              <div class="skill-item">
-                <h4>Django</h4>
-                <p>Full-stack web development with Django framework and REST APIs</p>
-              </div>
-              <div class="skill-item">
-                <h4>Scikit-learn</h4>
-                <p>Machine learning model development and evaluation</p>
-              </div>
-              <div class="skill-item">
-                <h4>Pandas & NumPy</h4>
-                <p>Data manipulation, analysis, and numerical computing</p>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>Tools & Technologies</h3>
-              <div class="skill-item">
-                <h4>API Integration</h4>
-                <p>RESTful API development and third-party service integration</p>
-              </div>
-              <div class="skill-item">
-                <h4>Automation</h4>
-                <p>Workflow automation using Python scripts and tools like Selenium</p>
-              </div>
-              <div class="skill-item">
-                <h4>Git & GitHub</h4>
-                <p>Version control and collaborative development workflows</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- /Skills Section -->
-
-    <section id="resume" class="resume section">
-      <div class="container aos-init aos-animate" data-aos="fade-up" bis_skin_checked="1">
-        <div class="section-title" bis_skin_checked="1">
-          <h2>Resume</h2>
-          <p>Professional journey and educational background</p>
-          <!-- FIXED Download Resume Button -->
-          <a href="resume/Wajahat_resume_updated.pdf" target="_blank" class="btn btn-primary mt-3">
-            <i class="bi bi-download me-2"></i>Download Resume
+            <i class="bi bi-download ms-auto" style="color:var(--muted);font-size:14px;"></i>
           </a>
         </div>
-
-        <div class="row" bis_skin_checked="1">
-          <div class="col-lg-6" bis_skin_checked="1">
-            <h3 class="resume-title">Professional Experience</h3>
-
-            <div class="resume-item" bis_skin_checked="1">
-              <h4>AI/Automation Intern</h4>
-              <h5>Jul 2025 – Sep 2025</h5>
-              <p><em>Y&amp;M TechWorks, Punjab, Pakistan</em></p>
-              <ul>
-                <li>Designed and deployed automation workflows using Python for backend processes and client-facing
-                  solutions</li>
-                <li>Created chatbot and AI-based tools to enhance business efficiency and customer engagement</li>
-                <li>Improved operational speed by automating repetitive tasks, reducing manual effort by over 60%</li>
-              </ul>
-            </div>
-
-            <div class="resume-item" bis_skin_checked="1">
-              <h4>Competitive Team Member</h4>
-              <h5>Jan 2025 – Present</h5>
-              <p><em>YOTA - Youth Organization for Technical Advancement, Islamabad, Pakistan</em></p>
-              <ul>
-                <li>Organized workshops for React and Git version control for university students</li>
-                <li>Collaborated with team members to deliver technical training sessions and skill development programs
-                </li>
-                <li>Contributed to university-based technical society initiatives and community building</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-lg-6" bis_skin_checked="1">
-            <h3 class="resume-title">Education</h3>
-
-            <div class="resume-item" bis_skin_checked="1">
-              <h4>Bachelor of Science in Computer Science</h4>
-              <h5>Feb 2023 – Feb 2027</h5>
-              <p><em>Bahria University, Islamabad, Pakistan</em></p>
-            </div>
-
-            <div class="resume-item" bis_skin_checked="1">
-              <h4>Intermediate, Pre-Engineering</h4>
-              <h5>Aug 2020 – Aug 2022</h5>
-              <p><em>F.G. Degree College for Men, Wah Cantt, Pakistan</em></p>
-            </div>
-
-            <h3 class="resume-title mt-4">Skills &amp; Tools</h3>
-            <div class="resume-item" bis_skin_checked="1">
-              <h4>Programming</h4>
-              <p>Python, C++, JavaScript, SQL</p>
-            </div>
-            <div class="resume-item" bis_skin_checked="1">
-              <h4>Frameworks</h4>
-              <p>Django, Scikit-learn, Pandas, NumPy, Tkinter, Bootstrap</p>
-            </div>
-            <div class="resume-item" bis_skin_checked="1">
-              <h4>Tools</h4>
-              <p>Selenium, n8n, OpenAI API, REST APIs, Git, GitHub</p>
-            </div>
-            <div class="resume-item" bis_skin_checked="1">
-              <h4>Specialties</h4>
-              <p>Machine Learning, Backend Development, Automation, Data Science</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications section">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Certifications</h2>
-          <p>Professional certifications and achievements</p>
-        </div>
-
-        <a href="https://www.linkedin.com/learning/certificates/47d2521978aeefdd6ffbbbea2695e6c7bde8ec5f72b3da77c5c022afb2c97537"
-          target="_blank">
-          <div class="card p-3">
-            <h5>Skill Up with Python: Data Science and ML</h5>
-            <p>LinkedIn • Jul 2025</p>
-          </div>
-        </a>
-        <a href="https://www.coursera.org/account/accomplishments/records/1YG38KCUGZCK" target="_blank">
-          <div class="card p-3">
-            <h5>Supervised Machine Learning: Regression & Classification</h5>
-            <p>DeepLearning.AI • Jun 2025</p>
-          </div>
-        </a>
-        <a href="https://www.udemy.com/certificate/UC-531d1455-345d-4096-adb5-637cc5eee608/" target="_blank">
-          <div class="card p-3">
-            <h5>Complete Python & Django Development</h5>
-            <p>Udemy • Mar 2025</p>
-          </div>
-        </a>
-      </div>
-    </section><!-- /Certifications Section -->
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Projects</h2>
-          <p>Check out some of my recent projects</p>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          <!-- Project 1 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap" onclick="showPortfolioDetails('rag-chatbot')">
-              <img
-                src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-                class="img-fluid" alt="RAG Chatbot">
-              <div class="portfolio-info">
-                <h4>RAG Chatbot</h4>
-                <p>WhatsApp Integration</p>
-                <div class="portfolio-links">
-                  <a href="javascript:void(0)" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                    class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap" onclick="showPortfolioDetails('whatsapp-automation')">
-              <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-                class="img-fluid" alt="WhatsApp Automation">
-              <div class="portfolio-info">
-                <h4>WhatsApp Automation</h4>
-                <p>Group Management</p>
-                <div class="portfolio-links">
-                  <a href="javascript:void(0)" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                    class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap" onclick="showPortfolioDetails('house-price-predictor')">
-              <img
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-                class="img-fluid" alt="House Price Predictor">
-              <div class="portfolio-info">
-                <h4>House Price Predictor</h4>
-                <p>Machine Learning</p>
-                <div class="portfolio-links">
-                  <a href="javascript:void(0)" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                    class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap" onclick="showPortfolioDetails('imdb-clone')">
-              <img
-                src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-                class="img-fluid" alt="IMDB Clone">
-              <div class="portfolio-info">
-                <h4>IMDB Clone</h4>
-                <p>Django Web App</p>
-                <div class="portfolio-links">
-                  <a href="javascript:void(0)" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                    class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap" onclick="showPortfolioDetails('weathersphere')">
-              <img
-                src="https://images.unsplash.com/photo-1463171379579-3fdfb86d6285?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-                class="img-fluid" alt="Weather Dashboard">
-              <div class="portfolio-info">
-                <h4>WeatherSphere</h4>
-                <p>Real-Time Dashboard</p>
-                <div class="portfolio-links">
-                  <a href="javascript:void(0)" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                    class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap" onclick="showPortfolioDetails('portfolio-website')">
-              <img
-                src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-                class="img-fluid" alt="Portfolio Website">
-              <div class="portfolio-info">
-                <h4>Portfolio Website</h4>
-                <p>Professional Design</p>
-                <div class="portfolio-links">
-                  <a href="#" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                    class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- /Portfolio Section -->
-
-    <!-- Portfolio Details Modals -->
-    <div id="rag-chatbot" class="portfolio-details">
-      <div class="portfolio-details-content">
-        <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
-        <h2>RAG Chatbot Integrated with WhatsApp</h2>
-        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-          alt="RAG Chatbot">
-        <h3>Project Overview</h3>
-        <p>A Retrieval-Augmented Generation chatbot developed as a real estate sales assistant integrated with WhatsApp.
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:10px;font-family:'Space Mono',monospace;">
+          📁 Resume files located at: <code style="color:var(--accent)">resume/Wajahat's Resume_AI.pdf</code> and <code style="color:var(--accent)">resume/Wajahat's resume_DS.pdf</code>
         </p>
-        <h3>Key Features</h3>
-        <ul>
-          <li>Led development of a Retrieval-Augmented Generation chatbot as a real estate sales assistant</li>
-          <li>Integrated with WhatsApp Business API and automated workflows with n8n and OpenAI API</li>
-          <li>Improved client query resolution efficiency by 50% and boosted customer engagement</li>
-          <li>Designed custom knowledge base with google docs for accurate information retrieval</li>
-        </ul>
-        <h3>Technologies Used</h3>
-        <p>Python, Django, WhatsApp Business API, n8n, OpenAI API, RAG Architecture</p>
       </div>
     </div>
+  </section>
 
-    <div id="whatsapp-automation" class="portfolio-details">
-      <div class="portfolio-details-content">
-        <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
-        <h2>WhatsApp Group Management Automation</h2>
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-          alt="WhatsApp Automation">
-        <h3>Project Overview</h3>
-        <p>A Python automation system for managing WhatsApp groups with advanced features and Excel integration.</p>
-        <h3>Key Features</h3>
-        <ul>
-          <li>Built Python automation system using Selenium, Tkinter, and Pandas for WhatsApp group management</li>
+  <!-- SKILLS -->
+  <section id="skills" data-aos="fade-up">
+    <div class="sec-label">// 02. skills</div>
+    <h2 class="sec-title">Technical Skills</h2>
+    <div class="sec-line"></div>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-cat-title">Languages & Backend</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Python</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag hot">Django</span>
+          <span class="skill-tag hot">FastAPI</span>
+          <span class="skill-tag">REST APIs</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-cat-title">AI &amp; Machine Learning</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">RAG Pipelines</span>
+          <span class="skill-tag hot">LLM Integration</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag hot">LangChain</span>
+          <span class="skill-tag hot">OpenAI API</span>
+          <span class="skill-tag hot">Groq API</span>
+          <span class="skill-tag">Feature Engineering</span>
+          <span class="skill-tag">YOLOv8</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-cat-title">Data Science</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Pandas</span>
+          <span class="skill-tag hot">NumPy</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Seaborn</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">Jupyter</span>
+          <span class="skill-tag">EDA</span>
+          <span class="skill-tag">TensorFlow</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-cat-title">Tools &amp; Automation</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">ChromaDB</span>
+          <span class="skill-tag">Selenium</span>
+          <span class="skill-tag hot">n8n</span>
+          <span class="skill-tag">WhatsApp Business API</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" data-aos="fade-up">
+    <div class="sec-label">// 03. resume</div>
+    <h2 class="sec-title">Experience &amp; Education</h2>
+    <div class="sec-line"></div>
+    <div class="row g-5">
+      <div class="col-lg-6">
+        <h3 style="font-size:1rem;color:var(--accent);font-family:'Space Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:28px;">Professional Experience</h3>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Dec 2025 – Jan 2026</div>
+            <div class="tl-title">Data Analyst Intern</div>
+            <div class="tl-org">Excelerate — Remote, Dubai UAE</div>
+            <ul class="tl-bullets">
+              <li>Led team as group leader coordinating remote data analytics project via Google Chat</li>
+              <li>Performed end-to-end data preprocessing, cleaning, and transformation on Excel datasets</li>
+              <li>Conducted EDA and feature engineering, built visualizations to communicate findings</li>
+            </ul>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jul 2024 – Sep 2024</div>
+            <div class="tl-title">AI / Automation Intern</div>
+            <div class="tl-org">Y&amp;M TechWorks — Punjab, Pakistan</div>
+            <ul class="tl-bullets">
+              <li>Engineered Python automation workflows for client-facing and backend processes</li>
+              <li>Developed and deployed production RAG chatbots with LLM integration and prompt engineering</li>
+              <li>Automated admin workflows using Selenium and n8n, cutting task execution time significantly</li>
+            </ul>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot purple"></div>
+            <div class="tl-date purple">Jan 2025 – Mar 2026</div>
+            <div class="tl-title">Competitive Team Member</div>
+            <div class="tl-org">YOTA — Youth Organization for Technical Advancement</div>
+            <ul class="tl-bullets">
+              <li>Competed in multiple coding competitions alongside junior mentoring</li>
+              <li>Co-delivered Python and AI training sessions to many junior members</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h3 style="font-size:1rem;color:var(--accent2);font-family:'Space Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:28px;">Education</h3>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot purple"></div>
+            <div class="tl-date purple">Dec 2022 – Dec 2026</div>
+            <div class="tl-title">Bachelor of Science in Computer Science</div>
+            <div class="tl-org">Bahria University, Islamabad, Pakistan</div>
+            <ul class="tl-bullets">
+              <li>Final Year Project: ResearchSense — AI Research Publications Dashboard</li>
+              <li>Relevant courses: Machine Learning, NLP, Data Science, Database Systems</li>
+            </ul>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot purple"></div>
+            <div class="tl-date purple">Aug 2020 – Aug 2022</div>
+            <div class="tl-title">Intermediate, Pre-Engineering</div>
+            <div class="tl-org">F.G. Degree College for Men, Wah Cantt</div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:32px;">
+          <h3 style="font-size:1rem;color:var(--accent);font-family:'Space Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;">Resume Downloads</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="resume/Wajahat's Resume_AI.pdf" target="_blank" class="resume-dl-card">
+              <div class="resume-dl-icon ai"><i class="bi bi-robot"></i></div>
+              <div>
+                <div class="resume-dl-title">AI Engineer Resume</div>
+                <div class="resume-dl-sub">RAG · LLM · Automation · Backend</div>
+              </div>
+              <i class="bi bi-download ms-auto" style="color:var(--accent2);font-size:16px;"></i>
+            </a>
+            <a href="resume/Wajahat's resume_DS.pdf" target="_blank" class="resume-dl-card">
+              <div class="resume-dl-icon ds"><i class="bi bi-bar-chart-line"></i></div>
+              <div>
+                <div class="resume-dl-title">Data Scientist Resume</div>
+                <div class="resume-dl-sub">ML · EDA · Predictive Modeling · Analytics</div>
+              </div>
+              <i class="bi bi-download ms-auto" style="color:var(--accent);font-size:16px;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" data-aos="fade-up">
+    <div class="sec-label">// 04. certifications</div>
+    <h2 class="sec-title">Certifications</h2>
+    <div class="sec-line"></div>
+    <div class="cert-grid">
+      <a href="https://www.linkedin.com/learning/certificates/47d2521978aeefdd6ffbbbea2695e6c7bde8ec5f72b3da77c5c022afb2c97537" target="_blank" class="cert-card">
+        <div class="cert-icon"><i class="bi bi-linkedin"></i></div>
+        <div class="cert-name">Skill Up with Python: Data Science &amp; ML</div>
+        <div class="cert-meta">LinkedIn Learning • Jul 2025</div>
+      </a>
+      <a href="https://www.coursera.org/account/accomplishments/records/1YG38KCUGZCK" target="_blank" class="cert-card">
+        <div class="cert-icon"><i class="bi bi-mortarboard"></i></div>
+        <div class="cert-name">Supervised ML: Regression &amp; Classification</div>
+        <div class="cert-meta">DeepLearning.AI · Coursera • Jun 2025</div>
+      </a>
+      <a href="https://www.udemy.com/certificate/UC-531d1455-345d-4096-adb5-637cc5eee608/" target="_blank" class="cert-card">
+        <div class="cert-icon"><i class="bi bi-play-circle"></i></div>
+        <div class="cert-name">Complete Python &amp; Django Development</div>
+        <div class="cert-meta">Udemy • Mar 2025</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="portfolio" data-aos="fade-up">
+    <div class="sec-label">// 05. projects</div>
+    <h2 class="sec-title">Projects</h2>
+    <div class="sec-line"></div>
+    <div class="projects-grid">
+
+      <!-- Military Object Detection -->
+      <div class="proj-card" onclick="openModal('modal-military')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Military Object Detection">
+          <div class="proj-img-overlay"></div>
+          <div class="proj-badge featured">⭐ Featured</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">Military Object Detection</div>
+          <div class="proj-sub">YOLOv8-based deep learning system detecting 12 military object classes from images, video &amp; live camera.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">YOLOv8</span><span class="proj-tag">PyTorch</span><span class="proj-tag">Computer Vision</span><span class="proj-tag">CUDA</span>
+          </div>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-view"><i class="bi bi-eye"></i> View Details</span>
+          <a href="https://github.com/WajahatGul/military-object-detection" target="_blank" onclick="event.stopPropagation()" style="color:var(--muted);font-size:18px;"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+
+      <!-- ResearchSense FYP -->
+      <div class="proj-card" onclick="openModal('modal-researchsense')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="ResearchSense">
+          <div class="proj-img-overlay"></div>
+          <div class="proj-badge featured">⭐ FYP</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">ResearchSense — AI Research Dashboard</div>
+          <div class="proj-sub">End-to-end RAG pipeline for semantic Q&amp;A over large collections of research publications using ChromaDB + Groq.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">RAG</span><span class="proj-tag">ChromaDB</span><span class="proj-tag">Groq API</span><span class="proj-tag">Django</span>
+          </div>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-view"><i class="bi bi-eye"></i> View Details</span>
+        </div>
+      </div>
+
+      <!-- RAG WhatsApp Chatbot -->
+      <div class="proj-card" onclick="openModal('modal-rag')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="RAG Chatbot">
+          <div class="proj-img-overlay"></div>
+          <div class="proj-badge">Production</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">RAG Chatbot — WhatsApp Sales Assistant</div>
+          <div class="proj-sub">Production RAG sales assistant integrated with WhatsApp Business API for real estate clients. 50% faster query resolution.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">OpenAI</span><span class="proj-tag">n8n</span><span class="proj-tag">WhatsApp API</span><span class="proj-tag">LangChain</span>
+          </div>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-view"><i class="bi bi-eye"></i> View Details</span>
+        </div>
+      </div>
+
+      <!-- PSL Cricket -->
+      <div class="proj-card" onclick="openModal('modal-psl')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="PSL Prediction">
+          <div class="proj-img-overlay"></div>
+          <div class="proj-badge">ML · Django</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">PSL Cricket Prediction System</div>
+          <div class="proj-sub">Django ML web app predicting match outcomes, batsman runs, and bowler wickets using 50+ engineered features.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Scikit-learn</span><span class="proj-tag">Django</span><span class="proj-tag">Feature Eng.</span>
+          </div>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-view"><i class="bi bi-eye"></i> View Details</span>
+        </div>
+      </div>
+
+      <!-- WhatsApp Automation -->
+      <div class="proj-card" onclick="openModal('modal-whatsapp')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="WhatsApp Automation">
+          <div class="proj-img-overlay"></div>
+          <div class="proj-badge">Automation</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">WhatsApp Group Management Automation</div>
+          <div class="proj-sub">Selenium + Pandas automation system for bulk WhatsApp group management. Reduced admin work by 70%.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Selenium</span><span class="proj-tag">Tkinter</span><span class="proj-tag">Pandas</span>
+          </div>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-view"><i class="bi bi-eye"></i> View Details</span>
+        </div>
+      </div>
+
+      <!-- House Price Predictor -->
+      <div class="proj-card" onclick="openModal('modal-house')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="House Price">
+          <div class="proj-img-overlay"></div>
+          <div class="proj-badge">ML · PKR</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">House Price Predictor</div>
+          <div class="proj-sub">Django web app predicting house prices using regression models with real-time PKR conversions.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Django</span><span class="proj-tag">Scikit-learn</span><span class="proj-tag">Joblib</span>
+          </div>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-view"><i class="bi bi-eye"></i> View Details</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECT MODALS -->
+  <div id="modal-military" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-military')">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeModal('modal-military')">&times;</span>
+      <img class="modal-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Military Object Detection">
+      <div class="modal-body">
+        <div class="modal-title">Military Object Detection — YOLOv8</div>
+        <p class="modal-p">A deep learning-based military object detection system built with YOLOv8, capable of detecting 12 military-related object classes from images, videos, and live camera footage. Trained on a custom dataset of 10,373 annotated images.</p>
+        <div class="modal-section-title">Dataset</div>
+        <p class="modal-p">more than 20,000 images across Train / Val / Test splits. 12 classes: camouflage_soldier, weapon, military_tank, military_truck, military_vehicle, civilian, soldier, civilian_vehicle, military_artillery, trench, military_aircraft, military_warship.</p>
+        <div class="modal-section-title">Key Features</div>
+        <ul class="modal-ul">
+          <li>YOLOv8n trained for 100 epochs on NVIDIA RTX A4000 16GB GPU with CUDA 12.4</li>
+          <li>Supports detection on images, videos, folders, live webcam, and IP camera streams</li>
+          <li>GUI-based file picker using Tkinter for easy source selection</li>
+          <li>mAP50: 0.114, Precision: 0.131, Recall: 0.102 (training in progress)</li>
+          <li>Input size 640×640, SGD optimizer, Ultralytics framework</li>
+        </ul>
+        <div class="modal-section-title">Technologies</div>
+        <div class="modal-tech">
+          <span>YOLOv8</span><span>PyTorch 2.6</span><span>CUDA 12.4</span><span>Ultralytics</span><span>OpenCV</span><span>Python 3.13</span><span>Tkinter</span><span>Jupyter</span>
+        </div>
+        <a href="https://github.com/WajahatGul/military-object-detection" target="_blank" class="modal-github-btn"><i class="bi bi-github"></i> View on GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-researchsense" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-researchsense')">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeModal('modal-researchsense')">&times;</span>
+      <img class="modal-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="ResearchSense">
+      <div class="modal-body">
+        <div class="modal-title">ResearchSense — AI Research Publications Dashboard (FYP)</div>
+        <p class="modal-p">Final Year Project: An end-to-end RAG pipeline using LLM and vector search to analyze research publications, enabling semantic Q&amp;A over large document collections.</p>
+        <div class="modal-section-title">Key Features</div>
+        <ul class="modal-ul">
+          <li>Architected end-to-end RAG pipeline with advanced PDF chunking and embedding generation</li>
+          <li>ChromaDB vector retrieval for high-relevance semantic search across document types</li>
+          <li>Groq API integration for faster LLM inference with reduced response latency</li>
+          <li>Full-stack: Django/FastAPI backend, React frontend, PostgreSQL + ChromaDB storage</li>
+          <li>Automated email notifications for faculty research paper uploads</li>
+        </ul>
+        <div class="modal-section-title">Technologies</div>
+        <div class="modal-tech">
+          <span>Django</span><span>FastAPI</span><span>React</span><span>ChromaDB</span><span>Groq API</span><span>LangChain</span><span>PostgreSQL</span><span>Python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-rag" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-rag')">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeModal('modal-rag')">&times;</span>
+      <img class="modal-img" src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="RAG Chatbot">
+      <div class="modal-body">
+        <div class="modal-title">RAG Chatbot Integrated with WhatsApp</div>
+        <p class="modal-p">Production RAG sales assistant integrated with WhatsApp Business API for real estate clients. Fully automated n8n workflows connecting OpenAI API, vector search, and WhatsApp.</p>
+        <div class="modal-section-title">Key Features</div>
+        <ul class="modal-ul">
+          <li>Led full-stack development of production RAG sales assistant for multiple real estate clients</li>
+          <li>Designed automated n8n workflows resolving client queries without human intervention</li>
+          <li>Improved client query resolution efficiency by 50%, boosted customer engagement</li>
+          <li>Custom knowledge base with Google Docs for accurate information retrieval</li>
+        </ul>
+        <div class="modal-section-title">Technologies</div>
+        <div class="modal-tech">
+          <span>Python</span><span>Django</span><span>OpenAI API</span><span>n8n</span><span>WhatsApp Business API</span><span>RAG</span><span>LangChain</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-psl" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-psl')">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeModal('modal-psl')">&times;</span>
+      <img class="modal-img" src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="PSL">
+      <div class="modal-body">
+        <div class="modal-title">PSL Cricket Prediction System</div>
+        <p class="modal-p">Django ML web app predicting PSL match outcomes, batsman runs, and bowler wickets using Scikit-learn models trained on historical PSL data.</p>
+        <div class="modal-section-title">Key Features</div>
+        <ul class="modal-ul">
+          <li>Three ML models: match outcome, batsman run prediction, bowler wicket prediction</li>
+          <li>Engineered 50+ cricket-specific features via feature engineering and data analysis</li>
+          <li>Achieved strong predictive accuracy across all three models</li>
+          <li>Django web interface for interactive match predictions</li>
+        </ul>
+        <div class="modal-section-title">Technologies</div>
+        <div class="modal-tech"><span>Django</span><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Python</span><span>Bootstrap</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-whatsapp" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-whatsapp')">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeModal('modal-whatsapp')">&times;</span>
+      <img class="modal-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="WhatsApp Automation">
+      <div class="modal-body">
+        <div class="modal-title">WhatsApp Group Management Automation</div>
+        <p class="modal-p">Python automation system for managing WhatsApp groups with bulk Excel imports, eliminating manual admin errors and saving hours of work weekly.</p>
+        <div class="modal-section-title">Key Features</div>
+        <ul class="modal-ul">
+          <li>Built Selenium + Pandas automation system managing multiple WhatsApp groups</li>
           <li>Reduced admin work time by 70% and eliminated manual errors with automated Excel imports</li>
-          <li>Reduced manual effort by 70% through automated member addition and message broadcasting</li>
-          <li>Developed user-friendly GUI with Tkinter for easy operation by non-technical users</li>
+          <li>Automated member addition and message broadcasting</li>
+          <li>User-friendly Tkinter GUI for non-technical users</li>
         </ul>
-        <h3>Technologies Used</h3>
-        <p>Python, Selenium, Tkinter, Pandas, Excel Automation, WhatsApp Web</p>
+        <div class="modal-section-title">Technologies</div>
+        <div class="modal-tech"><span>Python</span><span>Selenium</span><span>Tkinter</span><span>Pandas</span><span>Excel</span><span>WhatsApp Web</span></div>
       </div>
     </div>
+  </div>
 
-    <div id="house-price-predictor" class="portfolio-details">
-      <div class="portfolio-details-content">
-        <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
-        <h2>House Price Predictor (Django + ML)</h2>
-        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-          alt="House Price Predictor">
-        <h3>Project Overview</h3>
-        <p>A Django web application that predicts house prices using machine learning regression models.</p>
-        <h3>Key Features</h3>
-        <ul>
-          <li>Developed Django web app predicting house prices using regression models and Joblib serialization</li>
-          <li>Created responsive frontend for real-time predictions with PKR conversions</li>
-          <li>Trained on historical real estate data with high accuracy metrics</li>
+  <div id="modal-house" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-house')">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeModal('modal-house')">&times;</span>
+      <img class="modal-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="House Price">
+      <div class="modal-body">
+        <div class="modal-title">House Price Predictor</div>
+        <p class="modal-p">Django web app predicting house prices using regression models, Scikit-learn, and Joblib with a clean real-time interface featuring PKR conversions.</p>
+        <div class="modal-section-title">Key Features</div>
+        <ul class="modal-ul">
+          <li>Full data preprocessing, model training, and evaluation pipeline</li>
+          <li>Real-time PKR price predictions via responsive Django web interface</li>
           <li>Feature importance analysis for understanding price factors</li>
-          <li>Interactive web interface for easy price estimation</li>
+          <li>Joblib serialization for fast production model loading</li>
         </ul>
-        <h3>Technologies Used</h3>
-        <p>Python, Django, Scikit-learn, Regression Models, Joblib, JavaScript, HTML/CSS</p>
+        <div class="modal-section-title">Technologies</div>
+        <div class="modal-tech"><span>Django</span><span>Scikit-learn</span><span>Joblib</span><span>Python</span><span>Bootstrap</span><span>JavaScript</span></div>
       </div>
     </div>
+  </div>
 
-    <div id="imdb-clone" class="portfolio-details">
-      <div class="portfolio-details-content">
-        <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
-        <h2>IMDB Clone</h2>
-        <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-          alt="IMDB Clone">
-        <h3>Project Overview</h3>
-        <p>A Django web application for browsing movies and shows with comprehensive information and search
-          functionality.</p>
-        <h3>Key Features</h3>
-        <ul>
-          <li>Developed Django web app for browsing movies and shows and their information</li>
-          <li>Designed movie database web app with dynamic API integration and search functionality</li>
-          <li>Rating and reviews for the movies</li>
-        </ul>
-        <h3>Technologies Used</h3>
-        <p>Django, Python, HTML/CSS, JavaScript, Bootstrap, Movie Database API</p>
+  <!-- SERVICES -->
+  <section id="services" data-aos="fade-up">
+    <div class="sec-label">// 06. services</div>
+    <h2 class="sec-title">What I Offer</h2>
+    <div class="sec-line"></div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon"><i class="bi bi-diagram-3"></i></div>
+        <div class="svc-title">RAG Pipeline Development</div>
+        <div class="svc-desc">End-to-end Retrieval-Augmented Generation systems with vector databases, PDF ingestion, embedding generation, and LLM integration.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="bi bi-cpu"></i></div>
+        <div class="svc-title">Machine Learning Systems</div>
+        <div class="svc-desc">Predictive models, classification systems, and end-to-end ML pipelines from data preprocessing through deployment.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="bi bi-robot"></i></div>
+        <div class="svc-title">Chatbot Development</div>
+        <div class="svc-desc">Intelligent conversational agents integrated with WhatsApp, Telegram, or custom platforms powered by OpenAI or Groq.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="bi bi-code-slash"></i></div>
+        <div class="svc-title">Backend Development</div>
+        <div class="svc-desc">Robust Django and FastAPI backends, REST APIs, and database solutions designed for scale and production readiness.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="bi bi-gear-wide-connected"></i></div>
+        <div class="svc-title">Workflow Automation</div>
+        <div class="svc-desc">n8n, Selenium, and Python-based automation workflows that eliminate repetitive manual tasks and integrate business tools.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="bi bi-bar-chart-line"></i></div>
+        <div class="svc-title">Data Analysis</div>
+        <div class="svc-desc">EDA, feature engineering, data cleaning, and visualization pipelines that transform raw data into actionable business insights.</div>
       </div>
     </div>
+  </section>
 
-    <div id="weathersphere" class="portfolio-details">
-      <div class="portfolio-details-content">
-        <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
-        <h2>WeatherSphere - Real-Time Weather Dashboard</h2>
-        <img src="https://images.unsplash.com/photo-1463171379579-3fdfb86d6285?ixlib=rb-4.0.3&auto=format&fit=crop&q=80"
-          alt="WeatherSphere">
-        <h3>Project Overview</h3>
-        <p>A Django web application that provides real-time weather information for any city using the OpenWeatherMap
-          API.</p>
-        <h3>Key Features</h3>
-        <ul>
-          <li>Real-time weather data retrieval using OpenWeatherMap API</li>
-          <li>Search functionality to get weather information for any city worldwide</li>
-          <li>Display of temperature, weather conditions, humidity, and other meteorological data</li>
-          <li>Clean and responsive user interface for seamless user experience</li>
-          <li>Django backend for efficient API integration and data processing</li>
-        </ul>
-        <h3>Technologies Used</h3>
-        <p>Django, Python, OpenWeatherMap API, HTML/CSS, JavaScript, Bootstrap</p>
+  <!-- CONTACT -->
+  <section id="contact" data-aos="fade-up">
+    <div class="sec-label">// 07. contact</div>
+    <h2 class="sec-title">Get in Touch</h2>
+    <div class="sec-line"></div>
+    <div class="contact-grid">
+      <div>
+        <a href="mailto:wajahatgul2793@gmail.com" class="contact-item">
+          <div class="contact-icon"><i class="bi bi-envelope"></i></div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">wajahatgul2793@gmail.com</div>
+          </div>
+        </a>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-phone"></i></div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+92 318 541 9281</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Islamabad, Pakistan</div>
+          </div>
+        </div>
+        <a href="https://www.linkedin.com/in/wajahatgul98" target="_blank" class="contact-item">
+          <div class="contact-icon"><i class="bi bi-linkedin"></i></div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/wajahatgul98</div>
+          </div>
+        </a>
+        <a href="https://github.com/WajahatGul" target="_blank" class="contact-item">
+          <div class="contact-icon"><i class="bi bi-github"></i></div>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/WajahatGul</div>
+          </div>
+        </a>
+      </div>
+      <div class="contact-cta">
+        <h3>Let's build something.</h3>
+        <p>I'm actively looking for AI/DS entry-level roles and internships in Islamabad or remote. Open to freelance projects too — RAG systems, automation, ML models.</p>
+        <a href="mailto:wajahatgul2793@gmail.com" class="btn-primary-custom"><i class="bi bi-send"></i> Send me an email</a>
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="resume/Wajahat's Resume_AI.pdf" target="_blank" class="btn-outline-custom" style="font-size:0.82rem;padding:10px 18px;"><i class="bi bi-robot"></i> AI Resume</a>
+          <a href="resume/Wajahat's resume_DS.pdf" target="_blank" class="btn-outline-custom" style="font-size:0.82rem;padding:10px 18px;"><i class="bi bi-bar-chart-line"></i> DS Resume</a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services section">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>What I can offer</p>
-        </div>
+</main>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-cpu"></i></div>
-              <h4>Machine Learning</h4>
-              <p>Development of predictive models, AI solutions, and data-driven applications using advanced algorithms
-              </p>
-            </div>
-          </div>
+<footer>
+  <span>&copy; 2026 Wajahat Gul — All rights reserved</span>
+  <span style="font-family:'Space Mono',monospace;font-size:0.75rem;">Built with ❤️ &amp; Python</span>
+</footer>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-code-slash"></i></div>
-              <h4>Backend Development</h4>
-              <p>Building robust server-side applications, APIs, and database solutions with Django and Python</p>
-            </div>
-          </div>
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+<script>
+  AOS.init({ duration: 800, easing: 'ease-out', once: true });
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-robot"></i></div>
-              <h4>Process Automation</h4>
-              <p>Creating automated workflows and systems to streamline operations and increase efficiency</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-database"></i></div>
-              <h4>Data Analysis</h4>
-              <p>Transforming raw data into actionable insights through visualization and statistical analysis</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-chat-dots"></i></div>
-              <h4>Chatbot Development</h4>
-              <p>Building intelligent conversational agents integrated with various platforms and APIs</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-puzzle"></i></div>
-              <h4>API Integration</h4>
-              <p>Connecting diverse systems and services through well-designed API interfaces and integrations</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- /Services Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Get in touch with me</p>
-        </div>
-
-        <div class="row mt-1">
-          <div class="col-lg-12">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h3>Location:</h3>
-                <p>Islamabad, Pakistan</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h3>Email:</h3>
-                <p>wajahatgul2793@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h3>Phone:</h3>
-                <p>+92 318 541 9281</p>
-              </div>
-
-              <div class="social-links mt-3">
-                <a href="https://www.linkedin.com/in/wajahatgul98" target="_blank" class="linkedin"><i
-                    class="bi bi-linkedin"></i></a>
-                <a href="https://github.com/WajahatGul" target="_blank" class="github"><i class="bi bi-github"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- /Contact Section -->
-
-  </main>
-
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>2025</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="#">Wajahat Gul</a>
-      </div>
-    </div>
-  </footer>
-
-
-
-
-
-  <!-- Vendor JS Files -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-
-  <!-- Template Main JS File -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      "use strict";
-
-      // Mobile nav toggle
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const body = document.querySelector('body');
-
-      if (mobileNavToggle) {
-        mobileNavToggle.addEventListener('click', function (e) {
-          body.classList.toggle('mobile-nav-active');
-          this.classList.toggle('bi-list');
-          this.classList.toggle('bi-x');
-        });
-      }
-
-      // Typed.js initialization
-      if (document.querySelector('.typed')) {
-        var typed = new Typed('.typed', {
-          strings: document.querySelector('.typed').getAttribute('data-typed-items').split(','),
-          loop: true,
-          typeSpeed: 100,
-          backSpeed: 50,
-          backDelay: 2000
-        });
-      }
-
-      // Init AOS
-      AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-      });
-
-      // Init GLightbox
-      const glightbox = GLightbox({
-        selector: '.glightbox'
-      });
+  if (document.querySelector('.typed')) {
+    new Typed('.typed', {
+      strings: document.querySelector('.typed').getAttribute('data-typed-items').split(','),
+      loop: true, typeSpeed: 80, backSpeed: 40, backDelay: 1800
     });
+  }
 
-    // Portfolio details functions
-    function showPortfolioDetails(id) {
-      document.getElementById(id).style.display = 'block';
-      document.body.style.overflow = 'hidden';
+  // Mobile nav
+  const mobToggle = document.getElementById('mobToggle');
+  const sidebar = document.getElementById('sidebar');
+  mobToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    mobToggle.querySelector('i').className = sidebar.classList.contains('open') ? 'bi bi-x' : 'bi bi-list';
+  });
+  document.querySelectorAll('.nav-menu a').forEach(a => {
+    a.addEventListener('click', () => { sidebar.classList.remove('open'); mobToggle.querySelector('i').className = 'bi bi-list'; });
+  });
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.getAttribute('id'); });
+    document.querySelectorAll('.nav-menu a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  });
+
+  // Modals
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function closeOnOverlay(e, id) {
+    if (e.target === document.getElementById(id)) closeModal(id);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay').forEach(m => { m.style.display = 'none'; });
+      document.body.style.overflow = '';
     }
-
-    function closePortfolioDetails() {
-      const details = document.querySelectorAll('.portfolio-details');
-      details.forEach(detail => {
-        detail.style.display = 'none';
-      });
-      document.body.style.overflow = 'auto';
-    }
-
-    // Close portfolio details when clicking outside content
-    window.onclick = function (event) {
-      const details = document.querySelectorAll('.portfolio-details');
-      details.forEach(detail => {
-        if (event.target === detail) {
-          detail.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      });
-    }
-  </script>
-
+  });
+</script>
 </body>
-
 </html>

@@ -252,9 +252,7 @@
 
     /* ── ABOUT ── */
     .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 60px; align-items: start; }
-    .about-img-wrap {
-      position: relative;
-    }
+    .about-img-wrap { position: relative; }
     .about-img-wrap img {
       width: 100%; border-radius: 12px;
       filter: grayscale(20%);
@@ -334,7 +332,6 @@
       transition: all 0.2s;
     }
     .skill-tag:hover { border-color: var(--accent2); color: var(--accent2); background: rgba(124,58,237,0.07); }
-    .skill-tag.hot { border-color: rgba(0,212,255,0.3); color: var(--accent); background: rgba(0,212,255,0.06); }
 
     /* ── EXPERIENCE / EDUCATION TIMELINE ── */
     .timeline { position: relative; padding-left: 28px; }
@@ -591,7 +588,7 @@
     <a href="#hero" class="active"><i class="bi bi-house"></i> Home</a>
     <a href="#about"><i class="bi bi-person"></i> About</a>
     <a href="#skills"><i class="bi bi-cpu"></i> Skills</a>
-    <a href="#resume"><i class="bi bi-file-earmark-text"></i> Resume</a>
+    <a href="#resume"><i class="bi bi-briefcase"></i> Experience</a>
     <a href="#certifications"><i class="bi bi-award"></i> Certifications</a>
     <a href="#portfolio"><i class="bi bi-grid-1x2"></i> Projects</a>
     <a href="#services"><i class="bi bi-lightning"></i> Services</a>
@@ -599,7 +596,7 @@
   </nav>
   <div class="sidebar-status">
     <span class="status-dot"></span>
-    Available for opportunities
+    Open to roles &amp; internships
   </div>
 </aside>
 
@@ -668,10 +665,6 @@
             <div class="value">wajahatgul2793@gmail.com</div>
           </div>
           <div class="about-info-item">
-            <div class="label">Phone</div>
-            <div class="value">+92 318 541 9281</div>
-          </div>
-          <div class="about-info-item">
             <div class="label">Location</div>
             <div class="value">Islamabad, Pakistan</div>
           </div>
@@ -685,12 +678,16 @@
           </div>
           <div class="about-info-item">
             <div class="label">Status</div>
-            <div class="value" style="color:#22c55e">✓ Open to Hire</div>
+            <div class="value" style="color:#22c55e">✓ Open to Roles &amp; Internships</div>
+          </div>
+          <div class="about-info-item">
+            <div class="label">LinkedIn</div>
+            <div class="value"><a href="https://www.linkedin.com/in/wajahatgul98" target="_blank" style="color:var(--accent);text-decoration:none;">wajahatgul</a></div>
           </div>
         </div>
 
         <!-- RESUME DOWNLOAD CARDS -->
-        <div style="margin-top:8px; margin-bottom:6px; font-size:0.78rem; color:var(--muted); font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:0.1em;">
+        <div style="margin-top:8px; margin-bottom:12px; font-size:0.78rem; color:var(--muted); font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:0.1em;">
           Download Resume
         </div>
         <div class="resume-dl-grid">
@@ -711,9 +708,6 @@
             <i class="bi bi-download ms-auto" style="color:var(--muted);font-size:14px;"></i>
           </a>
         </div>
-        <p style="font-size:0.72rem;color:var(--muted);margin-top:10px;font-family:'Space Mono',monospace;">
-          📁 Resume files located at: <code style="color:var(--accent)">resume/Wajahat's Resume_AI.pdf</code> and <code style="color:var(--accent)">resume/Wajahat's resume_DS.pdf</code>
-        </p>
       </div>
     </div>
   </section>
@@ -725,28 +719,28 @@
     <div class="sec-line"></div>
     <div class="skills-grid">
       <div>
-        <div class="skill-cat-title">Languages & Backend</div>
+        <div class="skill-cat-title">Languages &amp; Backend</div>
         <div class="skill-tags">
-          <span class="skill-tag hot">Python</span>
+          <span class="skill-tag">Python</span>
           <span class="skill-tag">C++</span>
           <span class="skill-tag">JavaScript</span>
           <span class="skill-tag">SQL</span>
-          <span class="skill-tag hot">Django</span>
-          <span class="skill-tag hot">FastAPI</span>
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">FastAPI</span>
           <span class="skill-tag">REST APIs</span>
         </div>
       </div>
       <div>
         <div class="skill-cat-title">AI &amp; Machine Learning</div>
         <div class="skill-tags">
-          <span class="skill-tag hot">RAG Pipelines</span>
-          <span class="skill-tag hot">LLM Integration</span>
+          <span class="skill-tag">RAG Pipelines</span>
+          <span class="skill-tag">LLM Integration</span>
           <span class="skill-tag">Prompt Engineering</span>
           <span class="skill-tag">NLP</span>
           <span class="skill-tag">Scikit-learn</span>
-          <span class="skill-tag hot">LangChain</span>
-          <span class="skill-tag hot">OpenAI API</span>
-          <span class="skill-tag hot">Groq API</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">OpenAI API</span>
+          <span class="skill-tag">Groq API</span>
           <span class="skill-tag">Feature Engineering</span>
           <span class="skill-tag">YOLOv8</span>
         </div>
@@ -754,8 +748,8 @@
       <div>
         <div class="skill-cat-title">Data Science</div>
         <div class="skill-tags">
-          <span class="skill-tag hot">Pandas</span>
-          <span class="skill-tag hot">NumPy</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
           <span class="skill-tag">Matplotlib</span>
           <span class="skill-tag">Seaborn</span>
           <span class="skill-tag">Power BI</span>
@@ -768,9 +762,9 @@
       <div>
         <div class="skill-cat-title">Tools &amp; Automation</div>
         <div class="skill-tags">
-          <span class="skill-tag hot">ChromaDB</span>
+          <span class="skill-tag">ChromaDB</span>
           <span class="skill-tag">Selenium</span>
-          <span class="skill-tag hot">n8n</span>
+          <span class="skill-tag">n8n</span>
           <span class="skill-tag">WhatsApp Business API</span>
           <span class="skill-tag">Git</span>
           <span class="skill-tag">GitHub</span>
@@ -848,29 +842,6 @@
             <div class="tl-date purple">Aug 2020 – Aug 2022</div>
             <div class="tl-title">Intermediate, Pre-Engineering</div>
             <div class="tl-org">F.G. Degree College for Men, Wah Cantt</div>
-          </div>
-
-        </div>
-
-        <div style="margin-top:32px;">
-          <h3 style="font-size:1rem;color:var(--accent);font-family:'Space Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;">Resume Downloads</h3>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <a href="resume/Wajahat's Resume_AI.pdf" target="_blank" class="resume-dl-card">
-              <div class="resume-dl-icon ai"><i class="bi bi-robot"></i></div>
-              <div>
-                <div class="resume-dl-title">AI Engineer Resume</div>
-                <div class="resume-dl-sub">RAG · LLM · Automation · Backend</div>
-              </div>
-              <i class="bi bi-download ms-auto" style="color:var(--accent2);font-size:16px;"></i>
-            </a>
-            <a href="resume/Wajahat's resume_DS.pdf" target="_blank" class="resume-dl-card">
-              <div class="resume-dl-icon ds"><i class="bi bi-bar-chart-line"></i></div>
-              <div>
-                <div class="resume-dl-title">Data Scientist Resume</div>
-                <div class="resume-dl-sub">ML · EDA · Predictive Modeling · Analytics</div>
-              </div>
-              <i class="bi bi-download ms-auto" style="color:var(--accent);font-size:16px;"></i>
-            </a>
           </div>
         </div>
       </div>
@@ -1033,9 +1004,9 @@
       <img class="modal-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Military Object Detection">
       <div class="modal-body">
         <div class="modal-title">Military Object Detection — YOLOv8</div>
-        <p class="modal-p">A deep learning-based military object detection system built with YOLOv8, capable of detecting 12 military-related object classes from images, videos, and live camera footage. Trained on a custom dataset of 10,373 annotated images.</p>
+        <p class="modal-p">A deep learning-based military object detection system built with YOLOv8, capable of detecting 12 military-related object classes from images, videos, and live camera footage. Trained on a custom dataset of more than 20,000 annotated images.</p>
         <div class="modal-section-title">Dataset</div>
-        <p class="modal-p">more than 20,000 images across Train / Val / Test splits. 12 classes: camouflage_soldier, weapon, military_tank, military_truck, military_vehicle, civilian, soldier, civilian_vehicle, military_artillery, trench, military_aircraft, military_warship.</p>
+        <p class="modal-p">More than 20,000 images across Train / Val / Test splits. 12 classes: camouflage_soldier, weapon, military_tank, military_truck, military_vehicle, civilian, soldier, civilian_vehicle, military_artillery, trench, military_aircraft, military_warship.</p>
         <div class="modal-section-title">Key Features</div>
         <ul class="modal-ul">
           <li>YOLOv8n trained for 100 epochs on NVIDIA RTX A4000 16GB GPU with CUDA 12.4</li>
@@ -1212,13 +1183,6 @@
           </div>
         </a>
         <div class="contact-item">
-          <div class="contact-icon"><i class="bi bi-phone"></i></div>
-          <div>
-            <div class="contact-label">Phone</div>
-            <div class="contact-value">+92 318 541 9281</div>
-          </div>
-        </div>
-        <div class="contact-item">
           <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
           <div>
             <div class="contact-label">Location</div>
@@ -1245,8 +1209,6 @@
         <p>I'm actively looking for AI/DS entry-level roles and internships in Islamabad or remote. Open to freelance projects too — RAG systems, automation, ML models.</p>
         <a href="mailto:wajahatgul2793@gmail.com" class="btn-primary-custom"><i class="bi bi-send"></i> Send me an email</a>
         <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="resume/Wajahat's Resume_AI.pdf" target="_blank" class="btn-outline-custom" style="font-size:0.82rem;padding:10px 18px;"><i class="bi bi-robot"></i> AI Resume</a>
-          <a href="resume/Wajahat's resume_DS.pdf" target="_blank" class="btn-outline-custom" style="font-size:0.82rem;padding:10px 18px;"><i class="bi bi-bar-chart-line"></i> DS Resume</a>
         </div>
       </div>
     </div>

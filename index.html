@@ -33,6 +33,9 @@
       color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
     h1,h2,h3,h4,h5 { font-family: "Syne", sans-serif; font-weight: 700; }
     code, .mono { font-family: "Space Mono", monospace; }
@@ -282,12 +285,16 @@
       border-radius: 8px; padding: 12px 14px;
     }
     .about-info-item .label {
-      font-size: 0.7rem; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.1em;
+      font-size: 0.68rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.12em;
       font-family: "Space Mono", monospace;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
-    .about-info-item .value { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+    .about-info-item .value {
+      font-size: 0.95rem; color: var(--text); font-weight: 600;
+      letter-spacing: -0.01em; line-height: 1.4;
+      word-break: break-word;
+    }
     .about-para { color: var(--muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 16px; }
 
     /* ── RESUME DOWNLOAD CARDS ── */
@@ -389,6 +396,7 @@
       cursor: pointer;
       transition: all 0.3s;
       position: relative;
+      display: flex; flex-direction: column;
     }
     .proj-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
     .proj-img { position: relative; overflow: hidden; height: 180px; }
@@ -408,7 +416,14 @@
       backdrop-filter: blur(8px);
     }
     .proj-badge.featured { border-color: var(--accent3); color: var(--accent3); }
-    .proj-body { padding: 18px; }
+    .proj-badge.internship {
+      border-color: var(--accent2);
+      color: #fff;
+      background: var(--accent2);
+      font-weight: 700;
+      box-shadow: 0 2px 10px -2px rgba(124,58,237,0.7);
+    }
+    .proj-body { padding: 18px; flex: 1 0 auto; }
     .proj-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
     .proj-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
     .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -466,8 +481,13 @@
       font-size: 18px; color: var(--accent);
       flex-shrink: 0;
     }
-    .contact-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: "Space Mono", monospace; }
-    .contact-value { font-size: 0.92rem; color: var(--text); font-weight: 500; margin-top: 2px; }
+    .contact-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; font-family: "Space Mono", monospace; }
+    .contact-value {
+      font-size: 1rem; color: var(--text); font-weight: 600;
+      letter-spacing: -0.01em; margin-top: 4px; line-height: 1.35;
+      word-break: break-word;
+    }
+    .contact-item:hover .contact-value { color: var(--accent); }
     .contact-cta {
       background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(124,58,237,0.08));
       border: 1px solid var(--border2);
@@ -545,6 +565,96 @@
       font-size: 20px; cursor: pointer;
       align-items: center; justify-content: center;
     }
+
+    /* ══════════ VISUAL POLISH ══════════ */
+    @keyframes shimmer { to { background-position: 200% center; } }
+    @keyframes spin-ring { to { transform: rotate(360deg); } }
+    @keyframes gradientMove { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
+
+    /* Animated gradient on the name */
+    .hero-name span {
+      background: linear-gradient(120deg, var(--accent), var(--accent2) 45%, var(--accent3) 80%, var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+
+    /* Gradient section titles */
+    .sec-title {
+      background: linear-gradient(120deg, var(--text) 30%, var(--accent));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sec-line { background-size: 200% auto; animation: shimmer 3.5s linear infinite; }
+
+    /* Spinning conic-gradient profile ring (photo stays upright) */
+    .profile-ring {
+      background: conic-gradient(from 0deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+      animation: spin-ring 7s linear infinite;
+      box-shadow: 0 0 26px -4px rgba(0,212,255,0.4);
+    }
+    .profile-ring img { animation: spin-ring 7s linear infinite reverse; }
+
+    /* Gradient hero stat numbers */
+    .hero-stat-num {
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glowing buttons */
+    .btn-primary-custom { box-shadow: 0 10px 28px -10px rgba(0,212,255,0.6); }
+    .btn-primary-custom:hover { box-shadow: 0 14px 34px -8px rgba(0,212,255,0.8); }
+
+    /* Extra ambient glow in hero */
+    #hero::after {
+      content: ''; position: absolute;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(0,212,255,0.10) 0%, transparent 70%);
+      bottom: -160px; left: -120px;
+      pointer-events: none; z-index: 1;
+    }
+
+    /* Card glow + lift on hover */
+    .svc-card:hover     { box-shadow: 0 22px 44px -14px rgba(124,58,237,0.4); }
+    .cert-card:hover    { box-shadow: 0 22px 44px -14px rgba(245,158,11,0.32); }
+    .resume-dl-card:hover { box-shadow: 0 18px 36px -14px rgba(0,212,255,0.32); }
+    .skill-tag:hover    { transform: translateY(-2px); }
+    .about-info-item    { transition: all 0.25s; }
+    .about-info-item:hover {
+      border-color: var(--border2);
+      box-shadow: 0 14px 30px -16px rgba(0,212,255,0.3);
+      transform: translateY(-2px);
+    }
+    .contact-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px -16px rgba(0,212,255,0.32);
+    }
+    .contact-icon { transition: all 0.25s; }
+    .contact-item:hover .contact-icon {
+      background: var(--accent); color: var(--bg);
+      border-color: var(--accent);
+      box-shadow: 0 0 18px -2px rgba(0,212,255,0.6);
+    }
+
+    /* Animated gradient on the contact CTA */
+    .contact-cta {
+      background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(124,58,237,0.12), rgba(245,158,11,0.06));
+      background-size: 200% 200%;
+      animation: gradientMove 9s ease infinite;
+    }
+
+    /* Gentle float on the floating glows */
+    .hero-glow { animation: floaty 7s ease-in-out infinite; }
+
+    /* Respect reduced-motion users */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; }
+      .profile-ring img { animation: none !important; }
+    }
+
     @media (max-width: 1199px) {
       .sidebar { left: -280px; transition: left 0.3s; }
       .sidebar.open { left: 0; }
@@ -882,7 +992,7 @@
       <!-- Military Object Detection -->
       <div class="proj-card" onclick="openModal('modal-military')">
         <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Military Object Detection">
+          <img src="https://images.unsplash.com/photo-1759203977935-e317d4e675d2?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Military Object Detection">
           <div class="proj-img-overlay"></div>
           <div class="proj-badge featured">⭐ Featured</div>
         </div>
@@ -902,7 +1012,7 @@
       <!-- ResearchSense FYP -->
       <div class="proj-card" onclick="openModal('modal-researchsense')">
         <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="ResearchSense">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="ResearchSense">
           <div class="proj-img-overlay"></div>
           <div class="proj-badge featured">⭐ FYP</div>
         </div>
@@ -921,9 +1031,9 @@
       <!-- RAG WhatsApp Chatbot -->
       <div class="proj-card" onclick="openModal('modal-rag')">
         <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="RAG Chatbot">
+          <img src="https://images.unsplash.com/photo-1587573578181-f3342274f4c7?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="RAG Chatbot">
           <div class="proj-img-overlay"></div>
-          <div class="proj-badge">Production</div>
+          <div class="proj-badge internship"><i class="bi bi-briefcase"></i> Internship</div>
         </div>
         <div class="proj-body">
           <div class="proj-title">RAG Chatbot — WhatsApp Sales Assistant</div>
@@ -959,9 +1069,9 @@
       <!-- WhatsApp Automation -->
       <div class="proj-card" onclick="openModal('modal-whatsapp')">
         <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="WhatsApp Automation">
+          <img src="https://images.unsplash.com/photo-1633354931133-27ac1ee5d853?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="WhatsApp Automation">
           <div class="proj-img-overlay"></div>
-          <div class="proj-badge">Automation</div>
+          <div class="proj-badge internship"><i class="bi bi-briefcase"></i> Internship</div>
         </div>
         <div class="proj-body">
           <div class="proj-title">WhatsApp Group Management Automation</div>
@@ -980,7 +1090,7 @@
         <div class="proj-img">
           <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="House Price">
           <div class="proj-img-overlay"></div>
-          <div class="proj-badge">ML · PKR</div>
+          <div class="proj-badge internship"><i class="bi bi-briefcase"></i> Internship</div>
         </div>
         <div class="proj-body">
           <div class="proj-title">House Price Predictor</div>
@@ -1001,7 +1111,7 @@
   <div id="modal-military" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-military')">
     <div class="modal-box">
       <span class="modal-close" onclick="closeModal('modal-military')">&times;</span>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Military Object Detection">
+      <img class="modal-img" src="https://images.unsplash.com/photo-1759203977935-e317d4e675d2?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Military Object Detection">
       <div class="modal-body">
         <div class="modal-title">Military Object Detection — YOLOv8</div>
         <p class="modal-p">A deep learning-based military object detection system built with YOLOv8, capable of detecting 12 military-related object classes from images, videos, and live camera footage. Trained on a custom dataset of more than 20,000 annotated images.</p>
@@ -1027,7 +1137,7 @@
   <div id="modal-researchsense" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-researchsense')">
     <div class="modal-box">
       <span class="modal-close" onclick="closeModal('modal-researchsense')">&times;</span>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="ResearchSense">
+      <img class="modal-img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="ResearchSense">
       <div class="modal-body">
         <div class="modal-title">ResearchSense — AI Research Publications Dashboard (FYP)</div>
         <p class="modal-p">Final Year Project: An end-to-end RAG pipeline using LLM and vector search to analyze research publications, enabling semantic Q&amp;A over large document collections.</p>
@@ -1050,7 +1160,7 @@
   <div id="modal-rag" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-rag')">
     <div class="modal-box">
       <span class="modal-close" onclick="closeModal('modal-rag')">&times;</span>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="RAG Chatbot">
+      <img class="modal-img" src="https://images.unsplash.com/photo-1587573578181-f3342274f4c7?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="RAG Chatbot">
       <div class="modal-body">
         <div class="modal-title">RAG Chatbot Integrated with WhatsApp</div>
         <p class="modal-p">Production RAG sales assistant integrated with WhatsApp Business API for real estate clients. Fully automated n8n workflows connecting OpenAI API, vector search, and WhatsApp.</p>
@@ -1092,7 +1202,7 @@
   <div id="modal-whatsapp" class="modal-overlay" onclick="closeOnOverlay(event, 'modal-whatsapp')">
     <div class="modal-box">
       <span class="modal-close" onclick="closeModal('modal-whatsapp')">&times;</span>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="WhatsApp Automation">
+      <img class="modal-img" src="https://images.unsplash.com/photo-1633354931133-27ac1ee5d853?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="WhatsApp Automation">
       <div class="modal-body">
         <div class="modal-title">WhatsApp Group Management Automation</div>
         <p class="modal-p">Python automation system for managing WhatsApp groups with bulk Excel imports, eliminating manual admin errors and saving hours of work weekly.</p>
